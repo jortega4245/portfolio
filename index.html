@@ -4,66 +4,116 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joseph Ortega — Portfolio</title>
+  <meta name="description" content="Statistics & Data Science @ UC Berkeley | Portfolio of projects, experience, and contact." />
+  <meta property="og:title" content="Joseph Ortega — Portfolio" />
+  <meta property="og:description" content="Projects, experience, and contact information for Joseph Ortega." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/205101047?v=4" />
+  <meta name="color-scheme" content="light" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body{margin:0; font-family:Tahoma,Verdana,sans-serif; background:#fff; color:#000; line-height:1.6; opacity:0;}
-    body.loaded{opacity:1; transition:opacity .8s ease-out;}
+    :root{
+      --bg:#ffffff;
+      --card:#dfefff;
+      --text:#000000;
+      --muted:#1a3d7c;
+      --brand:#245edb; /* XP blue */
+      --accent:#4caf50; /* XP green */
+    }
 
-    .container{max-width:1040px; margin:0 auto; padding:24px}
-    .nav{display:flex; justify-content:space-between; align-items:center; background:linear-gradient(to bottom,#3a6ea5,#245edb); padding:6px 12px; color:#fff}
-    .nav a{color:#fff; text-decoration:none; padding:6px 10px; font-weight:700; font-size:14px}
-    .nav a:hover{background:rgba(255,255,255,.2); border-radius:4px}
-    .brand{font-weight:700; font-size:15px}
+    /* Base */
+    body{ margin:0; font-family:Tahoma, Verdana, sans-serif; background:var(--bg); color:var(--text); line-height:1.6; opacity:0 }
+    body.loaded{ opacity:1; transition:opacity .8s ease-out }
+    .container{ max-width:1040px; margin:0 auto; padding:24px }
 
-    .titlebar{display:flex; justify-content:space-between; align-items:center; background:linear-gradient(to bottom,#4f87d9,#245edb); color:#fff; padding:6px 10px; border:1px solid #1f4ca4; border-radius:6px 6px 0 0; box-shadow:inset 0 1px 0 rgba(255,255,255,.6),2px 2px 6px rgba(0,0,0,.15)}
-    .titlebar h2{margin:0; font-size:16px; display:flex; align-items:center; gap:6px}
-    .win-btns{display:flex; gap:4px}
-    .win-btn{width:14px; height:14px; border-radius:2px; border:1px solid rgba(0,0,0,.25); box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
-    .win-btn.min{background:linear-gradient(#ffe28a,#f7d25c); border-color:#b08a1f}
-    .win-btn.max{background:linear-gradient(#8de28d,#6cc06c); border-color:#2d7a2d}
-    .win-btn.close{background:linear-gradient(#f39a9a,#e06f6f); border-color:#8a2a2a}
+    /* Taskbar-like nav */
+    .nav{ display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,#3a6ea5,#245edb); padding:6px 12px; color:#fff; box-shadow:inset 0 -1px 0 rgba(255,255,255,.4) }
+    .nav a{ color:#fff; text-decoration:none; padding:6px 10px; font-weight:700; font-size:14px; border-radius:4px }
+    .nav a:hover{ background:rgba(255,255,255,.2) }
+    .brand{ font-weight:700; font-size:15px }
 
-    .panel{background:#dfefff; border:2px solid #7da2ce; border-top:none; border-radius:0 0 8px 8px; padding:16px; box-shadow:0 8px 22px rgba(0,0,0,.18); margin-bottom:20px}
+    /* Hero */
+    .hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:40px 0 }
+    .hero-card{ background:transparent; border:0; padding:0; margin:0 }
 
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:20px}
-    @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    /* XP window chrome */
+    .titlebar{ display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,#4f87d9,#245edb); color:#fff; padding:6px 10px; border:1px solid #1f4ca4; border-radius:6px 6px 0 0; box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 2px 2px 6px rgba(0,0,0,.15); margin-top:20px }
+    .titlebar h2{ margin:0; font-size:16px; display:flex; align-items:center; gap:6px; color:#fff }
+    .win-btns{ display:flex; gap:4px }
+    .win-btn{ width:14px; height:14px; border-radius:2px; border:1px solid rgba(0,0,0,.25); box-shadow:inset 0 1px 0 rgba(255,255,255,.8) }
+    .win-btn.min{ background:linear-gradient(#ffe28a,#f7d25c); border-color:#b08a1f }
+    .win-btn.max{ background:linear-gradient(#8de28d,#6cc06c); border-color:#2d7a2d }
+    .win-btn.close{ background:linear-gradient(#f39a9a,#e06f6f); border-color:#8a2a2a }
 
-    .card{background:#dfefff; border:2px solid #7da2ce; border-radius:8px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,.12); display:flex; flex-direction:column; position:relative}
-    .card h3{margin:6px 0; font-size:16px; color:#245edb; display:flex; align-items:center; gap:6px}
-    .kicker{font-size:11px; text-transform:uppercase; color:#444; font-weight:700}
-    .tags{margin-top:auto; align-self:flex-start; display:flex; gap:6px; flex-wrap:wrap}
-    .tag{font-size:10px; padding:3px 6px; border:1px solid #7da2ce; background:#f0f6ff; border-radius:4px; color:#000}
+    .panel{ background:var(--card); border:2px solid #7da2ce; border-top:none; border-radius:0 0 8px 8px; padding:16px; box-shadow:0 8px 22px rgba(0,0,0,.18); margin-bottom:20px }
 
-    .card.clickable:hover{box-shadow:0 0 8px rgba(36,94,219,.7); border-color:#245edb}
-    .card.disabled{opacity:.8; filter:grayscale(.1)}
-    .card a,.card a:visited,.card a:hover,.card a:focus,.card h3,.card h3 *{text-decoration:none!important; border-bottom:0!important; color:inherit!important}
+    /* Typography & chips */
+    h1{ margin:12px 0 8px; font-size:28px; color:var(--brand) }
+    .chip{ background:#e0ebff; border:1px solid #7da2ce; padding:4px 8px; border-radius:6px; font-size:12px; font-weight:700; color:var(--brand) }
+    .muted{ color:var(--muted) }
+    .quote{ font-style:italic; font-size:12px; color:#1a3d7c; text-align:center; margin:6px 0 0 }
 
-    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:40px 0}
-    .hero-card{margin-bottom:20px}
-    .avatar{max-height:460px; object-fit:cover; width:100%; border-radius:6px; border:2px solid #7da2ce; display:block}
-    .quote{font-style:italic; font-size:12px; color:#1a3d7c; text-align:center; margin-top:8px}
+    /* Buttons (small link boxes) */
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px }
+    .btn{ display:inline-flex; align-items:center; gap:6px; line-height:1; white-space:nowrap; background:linear-gradient(to bottom,#fff,#dfefff); border:1px solid #7da2ce; border-radius:4px; padding:6px 12px; font-weight:700; font-size:13px; color:var(--brand); text-decoration:none; box-shadow:inset 0 1px 0 #fff }
+    .btn.primary{ background:linear-gradient(to bottom,#4caf50,#2e7d32); border:1px solid #1b5e20; color:#fff }
+    .btn:hover{ filter:brightness(1.05) }
 
-    footer{padding:20px 0; font-size:12px; color:#333; margin-top:20px}
-    .footer-links{display:flex; gap:10px; flex-wrap:wrap}
+    /* Grid & cards */
+    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:20px }
+    @media (max-width:900px){ .grid{ grid-template-columns:1fr 1fr } }
+    @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
-    .xp-bg{position:fixed; inset:0; z-index:-1; background:white}
-    .xp-bg::before{content:""; position:absolute; inset:0; background:url('xp-bliss.jpg') center/cover no-repeat; opacity:0; transition:opacity 1.2s ease}
-    body.loaded .xp-bg::before{opacity:1}
-  .icon{width:16px;height:16px;vertical-align:middle;display:inline-block}
-    h2 img.icon{width:20px;height:20px}
-    .chip{background:#e0ebff;border:1px solid #7da2ce;padding:4px 8px;border-radius:6px;font-size:12px;font-weight:700;color:#245edb}
-    .muted{color:#1a3d7c}
-    /* kill underline on entire clickable card wrapper */
-    a.card, a.card:visited, a.card:hover, a.card:focus{ text-decoration:none!important; text-decoration-color:transparent!important; border-bottom:0!important; color:inherit!important }
-    /* highlight first project */
-    .card.watch{background:#fff7cc;border-color:#d8c26a}
+    .card{ background:var(--card); border:2px solid #7da2ce; border-radius:8px; padding:16px; box-shadow:0 6px 18px rgba(0,0,0,.12); display:flex; flex-direction:column; position:relative; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease }
+    .card h3{ margin:6px 0; font-size:16px; color:var(--brand); display:flex; align-items:center; gap:6px }
+    .kicker{ font-size:11px; text-transform:uppercase; color:#444; font-weight:700 }
+    .tags{ margin-top:auto; align-self:flex-start; display:flex; gap:6px; flex-wrap:wrap }
+    .tag{ font-size:10px; padding:3px 6px; border:1px solid #7da2ce; background:#f0f6ff; border-radius:4px; color:#000 }
+
+    .card.clickable:hover{ transform:translateY(-3px); box-shadow:0 10px 22px rgba(36,94,219,.5); border-color:var(--brand) }
+    .card.disabled{ opacity:.9; filter:grayscale(.06) }
+
+    /* Watch site highlight + 3D lift */
+    .card.watch{ background:#fff7cc; border-color:#d8c26a }
+    .card.watch:hover{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(36,94,219,.35); border-color:#245edb }
+
+    /* Icons */
+    .icon{ width:16px; height:16px; display:inline-block; vertical-align:middle }
+    h2 img.icon{ width:20px; height:20px }
+
+    /* Avatar */
+    .avatar{ max-height:460px; object-fit:cover; width:100%; border-radius:6px; border:2px solid #7da2ce; display:block }
+
+    /* Footer */
+    footer{ padding:20px 0; font-size:12px; color:#333; margin-top:20px }
+    .footer-links{ display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+
+    /* Kill any underline/visited styling inside and on card anchors */
+    .card a, .card a:visited, .card a:hover, .card a:focus, .card h3, .card h3 *{ text-decoration:none !important; border-bottom:0 !important; color:inherit }
+    a.card, a.card:visited, a.card:hover, a.card:focus{ text-decoration:none !important; text-decoration-color:transparent !important; border-bottom:0 !important; color:inherit !important }
+
+    /* XP Bliss bg */
+    .xp-bg{ position:fixed; inset:0; z-index:-1; background:#fff }
+    .xp-bg::before{ content:""; position:absolute; inset:0; background:url('xp-bliss.jpg') center/cover no-repeat; opacity:0; transition:opacity 1.2s ease }
+    body.loaded .xp-bg::before{ opacity:1 }
+
+    @media (prefers-reduced-motion: reduce){ body{opacity:1 !important} body.loaded{transition:none !important} }
   </style>
 </head>
 <body>
-  <script>(function(){function load(){document.body.classList.add('loaded');}if(window.requestAnimationFrame)requestAnimationFrame(load);else setTimeout(load,0);document.addEventListener('DOMContentLoaded',load);window.addEventListener('load',load);setTimeout(load,1500);})();</script>
+  <!-- Always-on fade-in (safe, tiny) -->
+  <script>
+    (function(){
+      function load(){ document.body.classList.add('loaded'); }
+      if(window.requestAnimationFrame) requestAnimationFrame(load); else setTimeout(load,0);
+      document.addEventListener('DOMContentLoaded', load);
+      window.addEventListener('load', load);
+      setTimeout(load,1500);
+    })();
+  </script>
+
   <div class="xp-bg" aria-hidden="true"></div>
 
   <header class="nav">
@@ -78,6 +128,7 @@
   </header>
 
   <main class="container">
+    <!-- HERO WINDOWS -->
     <section class="hero" id="hero">
       <div class="hero-card">
         <div class="titlebar">
@@ -88,21 +139,28 @@
           <span class="chip">Statistics • Data Science • Operations</span>
           <h1>Blending business intuition with statistical modeling.</h1>
           <p class="muted">Statistics major at UC Berkeley with a Data Science minor and 7+ years of leadership experience in operations. HSF Scholar, passionate about data strategy, algorithms, and operational analytics.</p>
+          <div class="actions">
+            <a class="btn primary" href="#projects"><img src="icons/folder.png" class="icon" alt="icon"/>Projects</a>
+            <a class="btn" href="mailto:jortega4245@yahoo.com"><img src="icons/email.png" class="icon" alt="icon"/>Email</a>
+            <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener"><img src="icons/user.png" class="icon" alt="icon"/>LinkedIn</a>
+          </div>
         </div>
       </div>
-      <div class="hero-card">
+
+      <div class="hero-card" aria-hidden="true">
         <div class="titlebar">
           <h2><img src="icons/user.png" class="icon" alt="icon"/> Profile</h2>
           <div class="win-btns"><span class="win-btn min"></span><span class="win-btn max"></span><span class="win-btn close"></span></div>
         </div>
-        <div class="panel">
+        <div class="panel" style="padding-bottom:10px">
           <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="JC Ortega" loading="eager" />
           <p class="quote">“do you have a single fact to back that up”</p>
         </div>
       </div>
     </section>
 
-        <section id="projects" class="section">
+    <!-- PROJECTS WINDOW -->
+    <section id="projects" class="section">
       <div class="titlebar">
         <h2><img src="icons/folder.png" class="icon" alt="icon"/> Projects</h2>
         <div class="win-btns"><span class="win-btn min"></span><span class="win-btn max"></span><span class="win-btn close"></span></div>
@@ -112,25 +170,26 @@
           <a class="card clickable watch" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
             <span class="kicker">Web</span>
             <h3><img src="icons/ie.png" class="icon" alt="icon"/> Watch Website</h3>
-            <p class="muted">My live watch site hosted on my user GitHub Pages. Click to visit the full site.</p>
-            <div class="tags"><span class="tag">Pages</span><span class="tag">Static</span></div>
+            <p class="muted">A live watch site hosted on my GitHub Pages, showcasing curated watch collections and specifications.</p>
+            <div class="tags"><span class="tag">Pages</span><span class="tag">Showcase</span></div>
           </a>
           <div class="card disabled" aria-disabled="true">
             <span class="kicker">Quant</span>
             <h3><img src="icons/chart.png" class="icon" alt="icon"/> Real-Time Trading Strategies</h3>
-            <p class="muted">Python pipelines for z-score crossings with alerting. Demo repo coming soon.</p>
+            <p class="muted">Concept design for trading signal detection and alerting pipelines.</p>
             <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Finance</span></div>
           </div>
           <div class="card disabled" aria-disabled="true">
             <span class="kicker">Cloud</span>
             <h3><img src="icons/computer.png" class="icon" alt="icon"/> Raspberry Pi Cloud Server</h3>
-            <p class="muted">Nextcloud on Raspberry Pi with RAID 5 and remote access. Write-up in progress.</p>
+            <p class="muted">Prototype of a self-hosted Nextcloud instance on Raspberry Pi with RAID 5 storage and remote access.</p>
             <div class="tags"><span class="tag">Linux</span><span class="tag">Nextcloud</span><span class="tag">RAID5</span></div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE WINDOW -->
     <section id="experience" class="section">
       <div class="titlebar">
         <h2><img src="icons/briefcase.png" class="icon" alt="icon"/> Experience</h2>
@@ -160,6 +219,7 @@
       </div>
     </section>
 
+    <!-- EDUCATION WINDOW -->
     <section id="education" class="section">
       <div class="titlebar">
         <h2><img src="icons/book.png" class="icon" alt="icon"/> Education</h2>
@@ -181,6 +241,7 @@
       </div>
     </section>
 
+    <!-- CONTACT WINDOW -->
     <section id="contact" class="section">
       <div class="titlebar">
         <h2><img src="icons/email.png" class="icon" alt="icon"/> Contact</h2>
@@ -188,7 +249,7 @@
       </div>
       <div class="panel">
         <p class="muted">Open to internships, analytics roles, and collaborations.</p>
-        <div class="actions" style="margin-top:8px; display:flex; gap:10px; flex-wrap:wrap">
+        <div class="actions">
           <a class="btn primary" href="mailto:jortega4245@yahoo.com"><img src="icons/email.png" class="icon" alt="icon"/>Email</a>
           <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener"><img src="icons/user.png" class="icon" alt="icon"/>LinkedIn</a>
           <a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener"><img src="icons/computer.png" class="icon" alt="icon"/>GitHub</a>
@@ -199,10 +260,16 @@
     <footer>
       <div class="footer-links">
         <span>© <span id="year"></span> JC Ortega</span>
+        <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#experience">Experience</a>
+        <a class="btn" href="#education">Education</a>
+        <a class="btn" href="#contact">Contact</a>
       </div>
     </footer>
   </main>
 
-  <script>(function(){var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();})();</script>
+  <script>
+    (function(){ var y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
+  </script>
 </body>
 </html>
