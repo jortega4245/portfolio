@@ -38,7 +38,7 @@
     .brand{ font-weight:700; font-size:15px }
 
     .hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:28px; padding:40px 0 }
-    .hero-card{$1box-shadow: 0 6px 18px rgba(0,0,0,.15);$2}
+    .hero-card{ background:transparent; border:0; padding:0; box-shadow:none; border-radius:0; margin-bottom:20px; }
     h1{ margin:12px 0 8px; font-size:28px; color: var(--brand) }
     .chip{ background:#e0ebff; border:1px solid #7da2ce; padding:4px 8px; border-radius:6px; font-size:12px; font-weight:700; color: var(--brand) }
     .muted{ color: var(--muted) }
@@ -48,7 +48,7 @@
     .btn.primary{ background:linear-gradient(to bottom, #4caf50, #2e7d32); border:1px solid #1b5e20; color:white }
     .btn:hover{ filter:brightness(1.05) }
 
-    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:20px }
+    .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:20px; }
     @media (max-width:900px){ .grid{ grid-template-columns:1fr 1fr } }
     @media (max-width:640px){ .grid{ grid-template-columns:1fr } }
 
@@ -69,7 +69,7 @@
     .win-btn.max{ background: linear-gradient(#8de28d,#6cc06c); border-color:#2d7a2d }
     .win-btn.close{ background: linear-gradient(#f39a9a,#e06f6f); border-color:#8a2a2a }
 
-    .panel{$1box-shadow: 0 8px 22px rgba(0,0,0,.18);$2}
+    .panel{$1 display:block; }
     .card.watch{ background:#fff7cc; border-color:#d8c26a }
     .card.watch:hover{ box-shadow:0 0 10px rgba(216,194,106,.6) }
 
