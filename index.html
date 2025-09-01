@@ -63,9 +63,38 @@
     .footer-links{ display:flex; gap:14px; flex-wrap:wrap }
     .avatar{ width:100%; aspect-ratio:1/1; border-radius:16px; object-fit:cover; border:1px solid color-mix(in oklab, var(--text) 10%, transparent) }
     .divider{ height:1px; background: color-mix(in oklab, var(--text) 10%, transparent); margin:24px 0 }
+  /* ===== Animations ===== */
+    @keyframes pageFade { from { opacity: 0 } to { opacity: 1 } }
+    @keyframes itemFadeUp { from { opacity:0; transform: translateY(8px) } to { opacity:1; transform:none } }
+
+    /* Start hidden; reveal via .loaded */
+    body{ opacity:0; animation: none; }
+    body.loaded{ opacity:1; animation: pageFade .8s ease-out forwards }
+
+    .reveal{ opacity:0; transform:translateY(8px) }
+    .reveal.show{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease }
+
+    /* Sequential cards */
+    .card{ opacity:0; transform: translateY(10px) }
+    .card.show{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease }
+
+    /* Clickable vs disabled cards */
+    .card.clickable{ position:relative }
+    .card.clickable:hover{ box-shadow: 0 10px 30px rgba(99,102,241,.25); border-color: color-mix(in oklab, var(--brand) 55%, transparent) }
+    .card.disabled{ pointer-events:none; filter: grayscale(.2) saturate(.9); opacity:.8; cursor:not-allowed }
+
+    /* ===== Windows XP "Bliss" vibe ===== */
+    .xp-bg{ position:fixed; inset:0; z-index:-1; background: white; }
+    body.loaded .xp-bg{ transition: opacity 1.2s ease; }
+    .xp-bg::before{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.65)), url('xp-bliss.jpg') center/cover no-repeat, linear-gradient(135deg, #8fd3fe, #90ee90); opacity:0; }
+    body.loaded .xp-bg::before{ opacity:1 }
+
+    /* Make cards pop a bit on white/grass bg */
+    .hero-card, .card{ backdrop-filter: saturate(140%) blur(2px) }
   </style>
 </head>
 <body>
+  <div class="xp-bg" aria-hidden="true"></div>
   <header class="nav">
     <div class="container" style="display:flex; align-items:center; justify-content:space-between">
       <a class="brand" href="#">
@@ -83,7 +112,7 @@
   </header>
 
   <main class="container">
-    <section class="hero">
+    <section class="hero reveal" id="hero">
       <div class="hero-card shadow">
         <span class="chip">Statistics • Data Science • Operations</span>
         <h1>Blending business intuition with statistical modeling.</h1>
@@ -95,37 +124,40 @@
         </div>
       </div>
       <div class="hero-card" aria-hidden="true">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="Joseph Ortega" />
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/000000?v=4" alt="Profile photo placeholder" />
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="projects" class="section reveal">
       <h2>Projects</h2>
-      <div class="grid">
-        <a class="card" href="https://github.com/jortega4245/trading-strategies" target="_blank" rel="noopener">
+      <div class="grid" id="projects-grid">
+        <!-- 1) Watch website — clickable and highlighted -->
+        <a class="card clickable" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
+          <span class="kicker">Web</span>
+          <h3>Watch Website</h3>
+          <p class="muted">My live watch site hosted on my user GitHub Pages. Click to visit the full site.</p>
+          <div class="tags"><span class="tag">Pages</span><span class="tag">Static</span></div>
+        </a>
+        <!-- 2) Real-Time Trading Strategies — showcase only (not clickable) -->
+        <div class="card disabled" aria-disabled="true">
           <span class="kicker">Quant</span>
           <h3>Real-Time Trading Strategies</h3>
-          <p class="muted">Developed Python-based strategies to detect z-score crossings and trigger automated alerts, testing multi-ticker performance in real time.</p>
+          <p class="muted">Python pipelines for z-score crossings with alerting. Demo repo coming soon.</p>
           <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Finance</span></div>
-        </a>
-        <a class="card" href="https://github.com/jortega4245/r-shiny-dashboards" target="_blank" rel="noopener">
-          <span class="kicker">Data Viz</span>
-          <h3>Interactive Dashboards in R</h3>
-          <p class="muted">Published interactive dashboards using Shiny and R, visualizing crash data, daily metrics, and population-adjusted crash density.</p>
-          <div class="tags"><span class="tag">R</span><span class="tag">Shiny</span></div>
-        </a>
-        <a class="card" href="https://github.com/jortega4245/pi-cloud-server" target="_blank" rel="noopener">
+        </div>
+        <!-- 3) Raspberry Pi Cloud Server — showcase only (not clickable) -->
+        <div class="card disabled" aria-disabled="true">
           <span class="kicker">Cloud</span>
           <h3>Raspberry Pi Cloud Server</h3>
-          <p class="muted">Built a Nextcloud-powered personal cloud storage solution on Raspberry Pi with RAID1 redundancy and remote access.</p>
+          <p class="muted">Nextcloud on Raspberry Pi with RAID1 and remote access. Write-up in progress.</p>
           <div class="tags"><span class="tag">Linux</span><span class="tag">Nextcloud</span><span class="tag">RAID1</span></div>
-        </a>
+        </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <section id="experience" class="section">
+    <section id="experience" class="section reveal">
       <h2>Experience</h2>
       <div class="grid">
         <div class="card">
@@ -151,7 +183,7 @@
 
     <div class="divider"></div>
 
-    <section id="education" class="section">
+    <section id="education" class="section reveal">
       <h2>Education</h2>
       <div class="grid">
         <div class="card">
@@ -169,7 +201,7 @@
 
     <div class="divider"></div>
 
-    <section id="contact" class="section">
+    <section id="contact" class="section reveal">
       <h2>Contact</h2>
       <p class="muted">Open to internships, analytics roles, and collaborations.</p>
       <div class="actions">
@@ -192,7 +224,32 @@
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Fade in sequence
+    document.addEventListener('DOMContentLoaded', () => {
+      // page fade
+      document.body.classList.add('loaded');
+
+      // hero first
+      const hero = document.getElementById('hero');
+      setTimeout(() => hero && hero.classList.add('show'), 200);
+
+      // sections next (projects, experience, education, contact)
+      const sections = Array.from(document.querySelectorAll('.section.reveal'));
+      let baseDelay = 400; // after hero
+      sections.forEach((sec, i) => {
+        setTimeout(() => sec.classList.add('show'), baseDelay + i * 200);
+      });
+
+      // grid cards: left-to-right, row by row
+      const grids = Array.from(document.querySelectorAll('.grid'));
+      grids.forEach(grid => {
+        const cards = Array.from(grid.querySelectorAll('.card'));
+        cards.forEach((card, i) => {
+          const rowDelay = Math.floor(i / 3) * 150; // each row
+          setTimeout(() => card.classList.add('show'), baseDelay + 400 + i * 120 + rowDelay);
+        });
+      });
+    });
   </script>
 </body>
 </html>
