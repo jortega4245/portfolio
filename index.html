@@ -26,7 +26,8 @@
     body{
       margin:0; font-family: Tahoma, Verdana, sans-serif;
       background: var(--bg); color: var(--text); line-height:1.6;
-      opacity:1; transition: opacity .8s ease-out;
+      opacity:0;}
+    body.loaded{opacity:1; transition: opacity .8s ease-out;}
     }
     body.loaded{ opacity:1 }
 
@@ -84,10 +85,23 @@
     .xp-bg{ position:fixed; inset:0; z-index:-1; background: white; }
     .xp-bg::before{ content:""; position:absolute; inset:0; background: url('xp-bliss.jpg') center/cover no-repeat; opacity:0; transition: opacity 1.2s ease; }
     body.loaded .xp-bg::before{ opacity:1 }
+  @media (prefers-reduced-motion: reduce){ body{opacity:1 !important} body.loaded{transition:none !important} }
   </style>
 <noscript><style>body{opacity:1 !important}</style></noscript>
 </head>
 <body>
+  <script>
+    // Always fade in safely: add 'loaded' ASAP, with backstops
+    (function(){
+      function load(){ document.body.classList.add('loaded'); }
+      // Kick on next frame to allow transition from 0 -> 1
+      if (window.requestAnimationFrame) requestAnimationFrame(load); else setTimeout(load, 0);
+      // Backstops in case first call is skipped
+      document.addEventListener('DOMContentLoaded', load);
+      window.addEventListener('load', load);
+      setTimeout(load, 1500);
+    })();
+  </script>
   <div class="xp-bg" aria-hidden="true"></div>
   <header class="nav">
     <div class="brand">Joseph Ortega</div>
@@ -113,7 +127,7 @@
         </div>
       </div>
       <div class="hero-card" aria-hidden="true">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/000000?v=4" alt="Profile photo placeholder" style="width:100%; border-radius:6px; border:2px solid #7da2ce;" />
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="JC Ortega" style="width:100%; border-radius:6px; border:2px solid #7da2ce;" />
         <p class="quote">“do you have a single fact to back that up”</p>
       </div>
     </section>
