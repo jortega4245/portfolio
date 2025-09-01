@@ -78,6 +78,20 @@
     /* Icons */
     h2{ display:flex; align-items:center; gap:6px; color:var(--brand) }
     h2 img.icon{ width:20px; height:20px }
+  /* --- Fix buttons/icons & link underlines --- */
+    .btn img.icon{ width:16px; height:16px; display:inline-block }
+    .card, .card *{ text-decoration:none }
+
+    /* --- XP Titlebar + Panel to keep headings readable over background --- */
+    .titlebar{ display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom, #4f87d9, #245edb); color:#fff; padding:6px 10px; border:1px solid #1f4ca4; border-radius:6px 6px 0 0; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 2px 2px 6px rgba(0,0,0,.15); position:relative }
+    .titlebar h2{ margin:0; font-size:16px; display:flex; align-items:center; gap:6px; color:#fff }
+    .win-btns{ display:flex; gap:6px }
+    .win-btn{ width:12px; height:12px; border-radius:2px; border:1px solid rgba(0,0,0,.25); background:#e6e6e6; box-shadow: inset 0 1px 0 #fff }
+    .panel{ background: var(--card); border:2px solid #7da2ce; border-top:none; border-radius:0 0 8px 8px; padding:16px; box-shadow: 2px 2px 6px rgba(0,0,0,.2); }
+
+    /* --- Highlight first project (Watch Website) --- */
+    .card.watch{ background:#fff7cc; border-color:#d8c26a }
+    .card.watch:hover{ box-shadow:0 0 10px rgba(216,194,106,.6) }
   </style>
 </head>
 <body>
@@ -111,25 +125,30 @@
     </section>
 
     <section id="projects" class="section">
-      <h2><img src="icons/folder.png" class="icon" alt="icon"/> Projects</h2>
-      <div class="grid">
-        <a class="card clickable" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
-          <span class="kicker">Web</span>
-          <h3><img src="icons/ie.png" class="icon" alt="icon"/> Watch Website</h3>
-          <p class="muted">My live watch site hosted on my user GitHub Pages. Click to visit the full site.</p>
-          <div class="tags"><span class="tag">Pages</span><span class="tag">Static</span></div>
-        </a>
-        <div class="card disabled">
-          <span class="kicker">Quant</span>
-          <h3><img src="icons/chart.png" class="icon" alt="icon"/> Real-Time Trading Strategies</h3>
-          <p class="muted">Python pipelines for z-score crossings with alerting. Demo repo coming soon.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Finance</span></div>
-        </div>
-        <div class="card disabled">
-          <span class="kicker">Cloud</span>
-          <h3><img src="icons/computer.png" class="icon" alt="icon"/> Raspberry Pi Cloud Server</h3>
-          <p class="muted">Nextcloud on Raspberry Pi with RAID1 and remote access. Write-up in progress.</p>
-          <div class="tags"><span class="tag">Linux</span><span class="tag">Nextcloud</span><span class="tag">RAID1</span></div>
+      <div class="titlebar">
+        <h2><img src="icons/folder.png" class="icon" alt="icon"/> Projects</h2>
+        <div class="win-btns"><span class="win-btn"></span><span class="win-btn"></span><span class="win-btn"></span></div>
+      </div>
+      <div class="panel">
+        <div class="grid">
+          <a class="card clickable watch" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
+            <span class="kicker">Web</span>
+            <h3><img src="icons/ie.png" class="icon" alt="icon"/> Watch Website</h3>
+            <p class="muted">My live watch site hosted on my user GitHub Pages. Click to visit the full site.</p>
+            <div class="tags"><span class="tag">Pages</span><span class="tag">Static</span></div>
+          </a>
+          <div class="card disabled">
+            <span class="kicker">Quant</span>
+            <h3><img src="icons/chart.png" class="icon" alt="icon"/> Real-Time Trading Strategies</h3>
+            <p class="muted">Python pipelines for z-score crossings with alerting. Demo repo coming soon.</p>
+            <div class="tags"><span class="tag">Python</span><span class="tag">APIs</span><span class="tag">Finance</span></div>
+          </div>
+          <div class="card disabled">
+            <span class="kicker">Cloud</span>
+            <h3><img src="icons/computer.png" class="icon" alt="icon"/> Raspberry Pi Cloud Server</h3>
+            <p class="muted">Nextcloud on Raspberry Pi with RAID1 and remote access. Write-up in progress.</p>
+            <div class="tags"><span class="tag">Linux</span><span class="tag">Nextcloud</span><span class="tag">RAID1</span></div>
+          </div>
         </div>
       </div>
     </section>
@@ -137,6 +156,11 @@
     <div class="divider"></div>
 
     <section id="experience" class="section">
+      <div class="titlebar">
+        <h2><img src="icons/briefcase.png" class="icon" alt="icon"/> Experience</h2>
+        <div class="win-btns"><span class="win-btn"></span><span class="win-btn"></span><span class="win-btn"></span></div>
+      </div>
+      <div class="panel">
       <h2><img src="icons/briefcase.png" class="icon" alt="icon"/> Experience</h2>
       <div class="grid">
         <div class="card">
@@ -158,11 +182,17 @@
           <div class="tags"><span class="tag">Operations</span><span class="tag">Security</span></div>
         </div>
       </div>
+    </div>
     </section>
 
     <div class="divider"></div>
 
     <section id="education" class="section">
+      <div class="titlebar">
+        <h2><img src="icons/book.png" class="icon" alt="icon"/> Education</h2>
+        <div class="win-btns"><span class="win-btn"></span><span class="win-btn"></span><span class="win-btn"></span></div>
+      </div>
+      <div class="panel">
       <h2><img src="icons/book.png" class="icon" alt="icon"/> Education</h2>
       <div class="grid">
         <div class="card">
@@ -176,11 +206,17 @@
           <p class="muted">Graduated Magna Cum Laude with a foundation in business and applied mathematics.</p>
         </div>
       </div>
+    </div>
     </section>
 
     <div class="divider"></div>
 
     <section id="contact" class="section">
+      <div class="titlebar">
+        <h2><img src="icons/email.png" class="icon" alt="icon"/> Contact</h2>
+        <div class="win-btns"><span class="win-btn"></span><span class="win-btn"></span><span class="win-btn"></span></div>
+      </div>
+      <div class="panel">
       <h2><img src="icons/email.png" class="icon" alt="icon"/> Contact</h2>
       <p class="muted">Open to internships, analytics roles, and collaborations.</p>
       <div class="actions">
@@ -188,6 +224,7 @@
         <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener"><img src="icons/user.png" class="icon" alt="icon"/>LinkedIn</a>
         <a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener"><img src="icons/computer.png" class="icon" alt="icon"/>GitHub</a>
       </div>
+    </div>
     </section>
 
     <footer>
