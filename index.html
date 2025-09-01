@@ -76,8 +76,8 @@
     .card.disabled{ opacity:.9; filter:grayscale(.06) }
 
     /* Watch site highlight + 3D lift */
-    .card.watch{ background:#fff7cc; border-color:#d8c26a }
-    .card.watch:hover{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(36,94,219,.35); border-color:#245edb }
+    .card.watch{ background:#fff7cc; border-color:#d8c26a; transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease }
+    .card.watch:hover{ transform:translateY(-4px); border-color:#245edb; box-shadow: 0 12px 28px rgba(36,94,219,.35), inset 0 -3px 0 #245edb; }
 
     /* Icons */
     .icon{ width:16px; height:16px; display:inline-block; vertical-align:middle }
@@ -260,10 +260,6 @@
     <footer>
       <div class="footer-links">
         <span>© <span id="year"></span> JC Ortega</span>
-        <a class="btn" href="#projects">Projects</a>
-        <a class="btn" href="#experience">Experience</a>
-        <a class="btn" href="#education">Education</a>
-        <a class="btn" href="#contact">Contact</a>
       </div>
     </footer>
   </main>
