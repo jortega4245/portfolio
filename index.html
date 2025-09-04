@@ -12,101 +12,90 @@
   <meta name="color-scheme" content="dark" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Palette tuned for the pixel-city wallpaper */
-      --bg-mask: rgba(7, 11, 19, .60); /* global dark overlay */
-      --glass: rgba(14, 22, 38, .62);  /* window background */
-      --glass-strong: rgba(14, 22, 38, .78);
-      --line:#22304f;                 /* borders */
-      --text:#eaf2ff;                 /* primary text */
-      --muted:#a9bfe8;                /* secondary */
-      --brand:#1793d1;                /* Arch blue */
-      --accent:#60c0ff;               /* light accent */
-      --ok:#2ecc71; --warn:#ffcc66; --danger:#ff6b6b;
-      --shadow:0 12px 36px rgba(5,10,20,.55), inset 0 1px 0 rgba(255,255,255,.05);
-      --radius:14px;
+      /* More minimal, borderless glass look */
+      --glass: rgba(12, 19, 32, .32);     /* main window bg (more transparent) */
+      --glass-strong: rgba(12, 19, 32, .44);
+      --line: rgba(96,192,255,.15);       /* faint separators */
+      --text:#eaf2ff;                     /* primary */
+      --muted:#9fb4d9;                    /* secondary */
+      --brand:#1793d1;                    /* Arch blue */
+      --accent:#60c0ff;                   /* light */
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; color:var(--text); line-height:1.65; letter-spacing:.2px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:#000; opacity:0}
-    body.ready{opacity:1; transition:opacity .5s ease}
+    body{margin:0; color:var(--text); line-height:1.65; letter-spacing:.2px; font-family:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas; background:#000; opacity:0}
+    body.ready{opacity:1; transition:opacity .4s ease}
 
-    /* Wallpaper (use your pixel city image name here) */
-    .wall{position:fixed; inset:0; z-index:-2; background:url('wallpaper.png') center/cover no-repeat}
-    .mask{position:fixed; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), var(--bg-mask)}
+    /* Wallpaper — put your image next to this file named pixel-city.png */
+    .wall{position:fixed; inset:0; z-index:-2; background:#000 url('pixel-city.png') center/cover no-repeat}
+    .mask{position:fixed; inset:0; z-index:-1; background:radial-gradient(1200px 600px at 15% -10%, rgba(23,147,209,.18), transparent), radial-gradient(900px 500px at 110% 0%, rgba(96,192,255,.12), transparent), rgba(0,0,0,.45)}
 
     a{color:var(--accent); text-decoration:none}
     .container{max-width:1180px; margin:0 auto; padding:28px}
 
-    /* Nav */
-    .nav{position:sticky; top:0; backdrop-filter:saturate(120%) blur(10px); background:linear-gradient(180deg, rgba(10,16,28,.85), rgba(10,16,28,.55)); border-bottom:1px solid var(--line); z-index:20}
-    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
-    .brand-logo{width:18px; height:18px; display:inline-block; background:conic-gradient(from 200deg at 50% 55%, var(--brand), var(--accent)); clip-path:path("M27.77 18.93c-1.43-2.9-3.37-6.42-5.7-10.3-1.28 2.2-2.92 5.27-4.52 8.64.86.58 1.7 1.2 2.48 1.86-1.7-.36-3.2-.4-4.52-.22-1.32.17-2.44.56-3.4 1.06 3.52-6.83 6.87-12.11 9.18-15.58 2.32 3.47 5.7 8.8 9.25 15.66-.95-.52-2.05-.93-3.43-1.12-1.38-.18-2.96-.15-4.73.2.8-.64 1.66-1.25 2.57-1.8z");}
-    .nav a{color:var(--text); font-weight:600; padding:8px 10px; border-radius:10px; opacity:.9}
-    .nav a:hover{background:rgba(96,192,255,.10); opacity:1}
+    /* Top nav (super minimal) */
+    .nav{position:sticky; top:0; backdrop-filter:saturate(120%) blur(8px); background:rgba(5,10,18,.40)}
+    .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 20px; border-bottom:1px solid var(--line)}
+    .brand{font-weight:700; font-family:Inter, system-ui; letter-spacing:.4px}
+    .nav a{color:var(--text); padding:6px 8px; border-radius:6px; opacity:.9}
+    .nav a:hover{background:rgba(96,192,255,.08); opacity:1}
 
-    /* Glass windows */
-    .window{background:var(--glass); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; position:relative; backdrop-filter: blur(8px) saturate(120%)}
-    .win-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px; background:linear-gradient(180deg, rgba(23,147,209,.14), rgba(23,147,209,.04)); border-bottom:1px solid var(--line)}
-    .win-title{display:flex; align-items:center; gap:10px; font-weight:700}
-    .lights{display:flex; gap:8px}
-    .dot{width:10px; height:10px; border-radius:50%; box-shadow:0 0 12px rgba(0,0,0,.6), inset 0 0 6px rgba(255,255,255,.2)}
-    .dot.min{background:linear-gradient(180deg, #ffe28a, #d7a91e)}
-    .dot.max{background:linear-gradient(180deg, #8de28d, #2f7d2f)}
-    .dot.close{background:linear-gradient(180deg, #ff9a9a, #8a2a2a)}
+    /* Borderless glass windows */
+    .window{background:var(--glass); border:0; border-radius:8px; box-shadow:0 18px 60px rgba(5,12,24,.55); overflow:hidden; position:relative; backdrop-filter: blur(12px) saturate(120%)}
+
+    /* Header strip — minimal hacker label */
+    .win-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px; background:linear-gradient(180deg, rgba(23,147,209,.10), rgba(23,147,209,.04)); border-bottom:1px solid var(--line)}
+    .win-title{font-weight:700; letter-spacing:.6px; text-transform:uppercase; font-size:12px; color:#bfe4ff}
     .win-body{padding:18px}
 
-    /* Layout: make About bigger than Profile */
-    .split{display:grid; grid-template-columns:1.35fr .65fr; gap:26px; margin:34px 0}
+    /* Layout: larger About, smaller Profile */
+    .split{display:grid; grid-template-columns:1.45fr .55fr; gap:22px; margin:30px 0}
     @media (max-width:1000px){ .split{grid-template-columns:1fr} }
 
-    /* Neofetch panel */
-    .neofetch{display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start}
-    .ascii{width:140px; height:140px}
-    .specs{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:13px}
+    /* Neofetch area */
+    .neofetch{display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:start}
+    .ascii{font-size:12px; line-height:1.05; color:#8ad4ff; white-space:pre; user-select:text; margin:0}
+    .specs{font-size:13px}
     .kv{display:grid; grid-template-columns:120px 1fr; gap:10px 14px}
-    .kv .k{color:#79a9dc}
-    .kv .v{color:#e6eefc}
-    .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
-    .badge{border:1px solid var(--line); padding:6px 10px; border-radius:10px; background:rgba(23,147,209,.10); font-weight:600}
+    .k{color:#79a9dc}
+    .v{color:#e6eefc}
 
-    /* Code editor vibe for headings/paragraphs (minimal) */
-    h1,h2,h3{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;}
-    .codeish{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;}
+    .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
+    .badge{border:1px solid var(--line); padding:4px 8px; border-radius:8px; background:rgba(23,147,209,.08); font-weight:600}
+
+    /* Code-ish copy */
+    h1{font-family:Inter, system-ui; font-size:20px; margin:0 0 8px 0}
     .codeish .key{color:#86e1a0}
     .codeish .str{color:#ffcc66}
     .codeish .num{color:#60c0ff}
 
-    /* Avatar smaller box */
-    .avatar{width:100%; max-width:360px; margin:0 auto; display:block; border-radius:12px; border:1px solid var(--line); box-shadow:0 12px 30px rgba(6,12,24,.6)}
+    /* Profile box smaller */
+    .avatar{width:100%; max-width:320px; margin:0 auto; display:block; border-radius:8px; border:0; box-shadow:0 12px 30px rgba(6,12,24,.6)}
     .caption{font-size:12px; color:var(--muted); text-align:center; margin-top:8px; font-style:italic}
 
     /* Sections */
-    .section{margin:36px 0}
+    .section{margin:32px 0}
 
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
     @media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
 
-    .card{background:var(--glass); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; backdrop-filter: blur(6px) saturate(120%)}
-    .card:hover{transform:translateY(-3px); border-color:rgba(96,192,255,.45); box-shadow:0 16px 40px rgba(15,40,80,.55)}
+    .card{background:var(--glass); border:0; border-radius:8px; padding:16px; box-shadow:0 16px 48px rgba(5,12,24,.5); transition:transform .15s ease, box-shadow .15s ease; backdrop-filter: blur(10px) saturate(120%)}
+    .card:hover{transform:translateY(-3px); box-shadow:0 20px 60px rgba(10,24,48,.6)}
     .kicker{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; font-weight:700}
-    .card h3{margin:8px 0 6px; color:var(--text)}
+    .card h3{margin:8px 0 6px; color:var(--text); font-family:Inter, system-ui}
     .muted{color:var(--muted)}
     .tags{display:flex; gap:8px; margin-top:auto; flex-wrap:wrap}
-    .tag{font-size:11px; border:1px solid var(--line); padding:4px 8px; border-radius:10px; color:var(--muted)}
+    .tag{font-size:11px; border:1px solid var(--line); padding:4px 8px; border-radius:8px; color:var(--muted)}
 
     .watch{position:relative}
-    .watch::after{content:""; position:absolute; left:16px; right:16px; bottom:-2px; height:2px; background:linear-gradient(90deg, transparent, var(--brand), transparent); opacity:.9; transition:opacity .2s ease}
-    .watch:hover::after{opacity:1}
+    .watch::after{content:""; position:absolute; left:16px; right:16px; bottom:-2px; height:1px; background:linear-gradient(90deg, transparent, var(--accent), transparent); opacity:.9}
 
-    footer{padding:26px 0; color:var(--muted); font-size:12px}
-
-    .card a, .card a:hover{color:inherit; text-decoration:none}
+    footer{padding:24px 0; color:var(--muted); font-size:12px}
   </style>
 </head>
 <body>
@@ -116,13 +105,13 @@
 
   <header class="nav">
     <div class="nav-inner container">
-      <div class="brand"><span class="brand-logo" aria-hidden="true"></span> Joseph Ortega</div>
+      <div class="brand">Joseph Ortega</div>
       <nav>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/jortega425" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
@@ -132,25 +121,31 @@
     <!-- About + Profile split -->
     <section class="split" id="about">
       <div class="window">
-        <div class="win-head">
-          <div class="win-title">🖥️ About (neofetch)</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">ABOUT — NEOFETCH</div></div>
         <div class="win-body">
           <div class="neofetch">
-            <!-- Arch SVG logo to match neofetch vibe -->
-            <svg class="ascii" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <defs>
-                <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-                  <stop offset="0" stop-color="#60c0ff"/>
-                  <stop offset="1" stop-color="#1793d1"/>
-                </linearGradient>
-              </defs>
-              <path fill="url(#g)" d="M24.9 3.5c-3.7 6-8.6 14.9-14 26.1 2.4-1.3 4.8-1.9 7-2.2 2.2-.3 4.2-.2 6 .1-1-.8-2.1-1.6-3.2-2.3 2.7-5.8 5.2-10.4 6.8-13.2 3.7 6.1 8.4 14.9 13.9 26.2-2.6-1.4-5.3-2.1-8.1-2.5-2.9-.4-5.9-.3-9 .3 1.2-.9 2.4-1.8 3.7-2.6-1.1-2-2.2-3.9-3.1-5.5z"/>
-            </svg>
+<pre class="ascii" aria-hidden="true">                   -`
+                  .o+`
+                 `ooo/
+                `+oooo:
+               `+oooooo:
+               -+oooooo+:
+             `/:-:++oooo+:
+            `/++++/+++++++:
+           `/++++++++++++++:
+          `/+++ooooooooooooo/`
+         ./ooosssso++osssssso+`
+        .oossssso-````/ossssss+`
+       -osssssso.      :ssssssso.
+      :osssssss/        osssso+++.
+     /ossssssss/        +ssssooo/-
+   `/ossssso+/:-        -:/+osssso+-
+  `+sso+:-`                 `.-/+oso:
+ `++:.                           `-/+/
+ .`                                 `</pre>
             <div class="specs">
-              <h1 style="margin:0 0 6px 0">Blending business intuition with statistical modeling.</h1>
-              <p class="muted codeish" style="margin:0 0 14px 0"><span class="key">--</span> Focus: <span class="str">statistics</span>, <span class="str">data science</span>, and <span class="str">operations</span>. 7+ years of leadership; HSF Scholar; passionate about data strategy & algorithms.</p>
+              <h1>Blending business intuition with statistical modeling.</h1>
+              <p class="muted codeish"><span class="key">let</span> focus = [<span class="str">"statistics"</span>, <span class="str">"data science"</span>, <span class="str">"operations"</span>]; // 7+ yrs leadership · HSF Scholar</p>
               <div class="kv">
                 <div class="k">OS</div><div class="v">UC Berkeley — Statistics (Data Science minor)</div>
                 <div class="k">Shell</div><div class="v">Operations • Data Science • Analytics</div>
@@ -159,16 +154,11 @@
                 <div class="k">Website</div><div class="v"><a href="https://jortega4245.github.io/portfolio/" target="_blank" rel="noopener">Portfolio</a></div>
                 <div class="k">Contact</div><div class="v"><a href="mailto:jortega4245@yahoo.com">jortega4245@yahoo.com</a></div>
               </div>
-              <div class="badges">
+              <div class="badges" style="margin-top:12px">
                 <span class="badge">Statistics</span>
                 <span class="badge">Data Science</span>
                 <span class="badge">Operations</span>
                 <span class="badge">Leadership</span>
-              </div>
-              <div class="actions" style="margin-top:14px">
-                <a class="btn" href="#projects">Projects</a>
-                <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn</a>
-                <a class="btn" href="mailto:jortega4245@yahoo.com">Email</a>
               </div>
             </div>
           </div>
@@ -176,10 +166,7 @@
       </div>
 
       <div class="window" aria-hidden="false">
-        <div class="win-head">
-          <div class="win-title">👤 Profile</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">PROFILE</div></div>
         <div class="win-body" style="display:flex;justify-content:center">
           <div>
             <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="JC Ortega" loading="eager" />
@@ -192,10 +179,7 @@
     <!-- Projects -->
     <section id="projects" class="section">
       <div class="window">
-        <div class="win-head">
-          <div class="win-title">📁 Projects</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">PROJECTS</div></div>
         <div class="win-body">
           <div class="grid">
             <a class="card watch" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
@@ -224,10 +208,7 @@
     <!-- Experience -->
     <section id="experience" class="section">
       <div class="window">
-        <div class="win-head">
-          <div class="win-title">💼 Experience</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">EXPERIENCE</div></div>
         <div class="win-body">
           <div class="grid">
             <div class="card">
@@ -256,10 +237,7 @@
     <!-- Education -->
     <section id="education" class="section">
       <div class="window">
-        <div class="win-head">
-          <div class="win-title">📚 Education</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">EDUCATION</div></div>
         <div class="win-body">
           <div class="grid">
             <div class="card">
@@ -280,16 +258,13 @@
     <!-- Contact -->
     <section id="contact" class="section">
       <div class="window">
-        <div class="win-head">
-          <div class="win-title">✉️ Contact</div>
-          <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
-        </div>
+        <div class="win-head"><div class="win-title">CONTACT</div></div>
         <div class="win-body">
           <p class="muted">Open to internships, analytics roles, and collaborations.</p>
-          <div class="actions">
-            <a class="btn" href="mailto:jortega4245@yahoo.com">Email</a>
-            <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
+          <div class="actions" style="display:flex; gap:10px; flex-wrap:wrap">
+            <a class="badge" href="mailto:jortega4245@yahoo.com">Email</a>
+            <a class="badge" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="badge" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </div>
@@ -301,9 +276,7 @@
   </main>
 
   <script>
-    (function(){
-      const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear();
-    })();
+    (function(){ const y=document.getElementById('year'); if(y) y.textContent=new Date().getFullYear(); })();
   </script>
 </body>
 </html>
