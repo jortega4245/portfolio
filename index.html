@@ -15,43 +15,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Arch/Dark palette */
-      --bg-0:#0a0f1a;      /* deep navy */
-      --bg-1:#0f1726;      /* card base */
-      --bg-2:#121d34;      /* elevated */
-      --line:#1e2b49;      /* subtle borders */
-      --text:#e6eefc;      /* primary text */
-      --muted:#9fb4d9;     /* secondary text */
-      --brand:#1793d1;     /* Arch blue */
-      --brand-2:#60c0ff;   /* lighter accent */
-      --ok:#2ecc71;
-      --warn:#ffcc66;
-      --danger:#ff6b6b;
-      --shadow:0 10px 30px rgba(12,20,40,.55), inset 0 1px 0 rgba(255,255,255,.04);
+      /* Palette tuned for the pixel-city wallpaper */
+      --bg-mask: rgba(7, 11, 19, .60); /* global dark overlay */
+      --glass: rgba(14, 22, 38, .62);  /* window background */
+      --glass-strong: rgba(14, 22, 38, .78);
+      --line:#22304f;                 /* borders */
+      --text:#eaf2ff;                 /* primary text */
+      --muted:#a9bfe8;                /* secondary */
+      --brand:#1793d1;                /* Arch blue */
+      --accent:#60c0ff;               /* light accent */
+      --ok:#2ecc71; --warn:#ffcc66; --danger:#ff6b6b;
+      --shadow:0 12px 36px rgba(5,10,20,.55), inset 0 1px 0 rgba(255,255,255,.05);
       --radius:14px;
     }
 
-    /* Reset / Base */
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background:radial-gradient(1200px 600px at 20% -10%, rgba(23,147,209,.18), transparent), radial-gradient(800px 500px at 110% 10%, rgba(96,192,255,.14), transparent), linear-gradient(180deg, var(--bg-0), #070b13 70%); color:var(--text); line-height:1.65; letter-spacing:.2px; opacity:0}
-    body.ready{opacity:1; transition:opacity .6s ease}
+    body{margin:0; color:var(--text); line-height:1.65; letter-spacing:.2px; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:#000; opacity:0}
+    body.ready{opacity:1; transition:opacity .5s ease}
 
-    a{color:var(--brand)}
+    /* Wallpaper (use your pixel city image name here) */
+    .wall{position:fixed; inset:0; z-index:-2; background:url('wallpaper.png') center/cover no-repeat}
+    .mask{position:fixed; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), var(--bg-mask)}
 
-    .container{max-width:1160px; margin:0 auto; padding:28px}
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:1180px; margin:0 auto; padding:28px}
 
-    /* Top nav */
-    .nav{position:sticky; top:0; backdrop-filter:saturate(120%) blur(10px); background:linear-gradient(180deg, rgba(15,23,38,.85), rgba(15,23,38,.55)); border-bottom:1px solid var(--line); z-index:9}
+    /* Nav */
+    .nav{position:sticky; top:0; backdrop-filter:saturate(120%) blur(10px); background:linear-gradient(180deg, rgba(10,16,28,.85), rgba(10,16,28,.55)); border-bottom:1px solid var(--line); z-index:20}
     .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 24px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700}
-    .brand-logo{width:18px; height:18px; display:inline-block; background:conic-gradient(from 200deg at 50% 55%, var(--brand), var(--brand-2)); clip-path:path("M27.77 18.93c-1.43-2.9-3.37-6.42-5.7-10.3-1.28 2.2-2.92 5.27-4.52 8.64.86.58 1.7 1.2 2.48 1.86-1.7-.36-3.2-.4-4.52-.22-1.32.17-2.44.56-3.4 1.06 3.52-6.83 6.87-12.11 9.18-15.58 2.32 3.47 5.7 8.8 9.25 15.66-.95-.52-2.05-.93-3.43-1.12-1.38-.18-2.96-.15-4.73.2.8-.64 1.66-1.25 2.57-1.8z");}
-    .nav a{color:var(--text); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px; opacity:.9}
-    .nav a:hover{background:rgba(96,192,255,.08); opacity:1}
+    .brand-logo{width:18px; height:18px; display:inline-block; background:conic-gradient(from 200deg at 50% 55%, var(--brand), var(--accent)); clip-path:path("M27.77 18.93c-1.43-2.9-3.37-6.42-5.7-10.3-1.28 2.2-2.92 5.27-4.52 8.64.86.58 1.7 1.2 2.48 1.86-1.7-.36-3.2-.4-4.52-.22-1.32.17-2.44.56-3.4 1.06 3.52-6.83 6.87-12.11 9.18-15.58 2.32 3.47 5.7 8.8 9.25 15.66-.95-.52-2.05-.93-3.43-1.12-1.38-.18-2.96-.15-4.73.2.8-.64 1.66-1.25 2.57-1.8z");}
+    .nav a{color:var(--text); font-weight:600; padding:8px 10px; border-radius:10px; opacity:.9}
+    .nav a:hover{background:rgba(96,192,255,.10); opacity:1}
 
-    /* Tech window (card) */
-    .window{background:linear-gradient(180deg, rgba(20,30,52,.9), rgba(13,20,36,.9)); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; position:relative}
-    .win-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px; background:linear-gradient(180deg, rgba(23,147,209,.15), rgba(23,147,209,.04)); border-bottom:1px solid var(--line)}
+    /* Glass windows */
+    .window{background:var(--glass); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; position:relative; backdrop-filter: blur(8px) saturate(120%)}
+    .win-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 14px; background:linear-gradient(180deg, rgba(23,147,209,.14), rgba(23,147,209,.04)); border-bottom:1px solid var(--line)}
     .win-title{display:flex; align-items:center; gap:10px; font-weight:700}
     .lights{display:flex; gap:8px}
     .dot{width:10px; height:10px; border-radius:50%; box-shadow:0 0 12px rgba(0,0,0,.6), inset 0 0 6px rgba(255,255,255,.2)}
@@ -60,28 +60,30 @@
     .dot.close{background:linear-gradient(180deg, #ff9a9a, #8a2a2a)}
     .win-body{padding:18px}
 
-    /* Neofetch panel */
-    .split{display:grid; grid-template-columns:1.1fr .9fr; gap:26px; margin:34px 0}
-    @media (max-width:960px){ .split{grid-template-columns:1fr;}}
+    /* Layout: make About bigger than Profile */
+    .split{display:grid; grid-template-columns:1.35fr .65fr; gap:26px; margin:34px 0}
+    @media (max-width:1000px){ .split{grid-template-columns:1fr} }
 
+    /* Neofetch panel */
     .neofetch{display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start}
-    .ascii{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:12px; line-height:1.1; color:#8ad4ff; white-space:pre; user-select:text}
-    .specs{font-family:"JetBrains Mono", ui-monospace, monospace; font-size:13px}
-    .kv{display:grid; grid-template-columns:110px 1fr; gap:10px 14px}
+    .ascii{width:140px; height:140px}
+    .specs{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size:13px}
+    .kv{display:grid; grid-template-columns:120px 1fr; gap:10px 14px}
     .kv .k{color:#79a9dc}
     .kv .v{color:#e6eefc}
     .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
-    .badge{border:1px solid var(--line); padding:6px 10px; border-radius:10px; background:rgba(23,147,209,.06); font-weight:600}
+    .badge{border:1px solid var(--line); padding:6px 10px; border-radius:10px; background:rgba(23,147,209,.10); font-weight:600}
 
-    /* Avatar panel */
-    .avatar{width:100%; border-radius:12px; border:1px solid var(--line); box-shadow:0 12px 30px rgba(6,12,24,.6)}
+    /* Code editor vibe for headings/paragraphs (minimal) */
+    h1,h2,h3{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;}
+    .codeish{font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;}
+    .codeish .key{color:#86e1a0}
+    .codeish .str{color:#ffcc66}
+    .codeish .num{color:#60c0ff}
+
+    /* Avatar smaller box */
+    .avatar{width:100%; max-width:360px; margin:0 auto; display:block; border-radius:12px; border:1px solid var(--line); box-shadow:0 12px 30px rgba(6,12,24,.6)}
     .caption{font-size:12px; color:var(--muted); text-align:center; margin-top:8px; font-style:italic}
-
-    /* Buttons */
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{--b:var(--brand); display:inline-flex; align-items:center; gap:8px; font-weight:700; text-decoration:none; color:var(--text); border:1px solid var(--b); padding:9px 14px; border-radius:12px; position:relative; background:linear-gradient(180deg, rgba(23,147,209,.18), rgba(23,147,209,.08)); box-shadow:0 0 0 1px rgba(23,147,209,.2) inset, 0 10px 20px rgba(23,147,209,.12)}
-    .btn:hover{box-shadow:0 0 0 1px rgba(23,147,209,.35) inset, 0 14px 28px rgba(23,147,209,.2)}
-    .btn.primary{--b:var(--brand-2); background:linear-gradient(180deg, rgba(96,192,255,.22), rgba(96,192,255,.1))}
 
     /* Sections */
     .section{margin:36px 0}
@@ -90,7 +92,7 @@
     @media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
 
-    .card{background:linear-gradient(180deg, rgba(17,26,46,.9), rgba(13,20,36,.9)); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease}
+    .card{background:var(--glass); border:1px solid var(--line); border-radius:12px; padding:16px; box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; backdrop-filter: blur(6px) saturate(120%)}
     .card:hover{transform:translateY(-3px); border-color:rgba(96,192,255,.45); box-shadow:0 16px 40px rgba(15,40,80,.55)}
     .kicker{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; font-weight:700}
     .card h3{margin:8px 0 6px; color:var(--text)}
@@ -104,12 +106,13 @@
 
     footer{padding:26px 0; color:var(--muted); font-size:12px}
 
-    /* Ensure links inside cards don't inherit underline */
     .card a, .card a:hover{color:inherit; text-decoration:none}
   </style>
 </head>
 <body>
   <script>addEventListener('load',()=>document.body.classList.add('ready'))</script>
+  <div class="wall" aria-hidden="true"></div>
+  <div class="mask" aria-hidden="true"></div>
 
   <header class="nav">
     <div class="nav-inner container">
@@ -119,7 +122,7 @@
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jortega425" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </div>
   </header>
@@ -135,16 +138,19 @@
         </div>
         <div class="win-body">
           <div class="neofetch">
-            <pre class="ascii" aria-hidden="true">
-          /\
-         /  \         _         _               
-        / /\ \  __ _| |__  ___| |__   ___  ___ 
-       / ____ \/ _` | '_ \/ __| '_ \ / _ \/ __|
-      /_/    \_\__,_|_.__/\___|_.__/ \___/\__\
-            </pre>
+            <!-- Arch SVG logo to match neofetch vibe -->
+            <svg class="ascii" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#60c0ff"/>
+                  <stop offset="1" stop-color="#1793d1"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#g)" d="M24.9 3.5c-3.7 6-8.6 14.9-14 26.1 2.4-1.3 4.8-1.9 7-2.2 2.2-.3 4.2-.2 6 .1-1-.8-2.1-1.6-3.2-2.3 2.7-5.8 5.2-10.4 6.8-13.2 3.7 6.1 8.4 14.9 13.9 26.2-2.6-1.4-5.3-2.1-8.1-2.5-2.9-.4-5.9-.3-9 .3 1.2-.9 2.4-1.8 3.7-2.6-1.1-2-2.2-3.9-3.1-5.5z"/>
+            </svg>
             <div class="specs">
               <h1 style="margin:0 0 6px 0">Blending business intuition with statistical modeling.</h1>
-              <p class="muted" style="margin:0 0 14px 0">Statistics major at UC Berkeley with a Data Science minor and 7+ years of leadership experience in operations. HSF Scholar, passionate about data strategy, algorithms, and operational analytics.</p>
+              <p class="muted codeish" style="margin:0 0 14px 0"><span class="key">--</span> Focus: <span class="str">statistics</span>, <span class="str">data science</span>, and <span class="str">operations</span>. 7+ years of leadership; HSF Scholar; passionate about data strategy & algorithms.</p>
               <div class="kv">
                 <div class="k">OS</div><div class="v">UC Berkeley — Statistics (Data Science minor)</div>
                 <div class="k">Shell</div><div class="v">Operations • Data Science • Analytics</div>
@@ -159,8 +165,8 @@
                 <span class="badge">Operations</span>
                 <span class="badge">Leadership</span>
               </div>
-              <div class="actions">
-                <a class="btn primary" href="#projects">Projects</a>
+              <div class="actions" style="margin-top:14px">
+                <a class="btn" href="#projects">Projects</a>
                 <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn</a>
                 <a class="btn" href="mailto:jortega4245@yahoo.com">Email</a>
               </div>
@@ -174,9 +180,11 @@
           <div class="win-title">👤 Profile</div>
           <div class="lights"><span class="dot min"></span><span class="dot max"></span><span class="dot close"></span></div>
         </div>
-        <div class="win-body">
-          <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="JC Ortega" loading="eager" />
-          <p class="caption">“do you have a single fact to back that up”</p>
+        <div class="win-body" style="display:flex;justify-content:center">
+          <div>
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/205101047?v=4" alt="JC Ortega" loading="eager" />
+            <p class="caption">“do you have a single fact to back that up”</p>
+          </div>
         </div>
       </div>
     </section>
@@ -279,7 +287,7 @@
         <div class="win-body">
           <p class="muted">Open to internships, analytics roles, and collaborations.</p>
           <div class="actions">
-            <a class="btn primary" href="mailto:jortega4245@yahoo.com">Email</a>
+            <a class="btn" href="mailto:jortega4245@yahoo.com">Email</a>
             <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
           </div>
