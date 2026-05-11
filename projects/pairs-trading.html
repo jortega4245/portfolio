@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real-Time Pairs Trading Strategy — Joseph Ortega</title>
+  <meta name="description" content="A mean-reversion trading system built around cointegration, ADF testing, z-score thresholds, bootstrap uncertainty, and backtesting." />
+  <meta name="theme-color" content="#071014" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="logo-mark">∇</span>
+        <span>joseph.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#methods">Methods</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-hero container">
+      <div class="project-hero-grid">
+        <div class="panel project-title reveal">
+          <a class="back" href="../index.html#projects">← Back to Project Atlas</a>
+          <div class="eyebrow">z · spread normalization</div>
+          <h1>Real-Time Pairs Trading Strategy</h1>
+          <p>A mean-reversion trading system built around cointegration, ADF testing, z-score thresholds, bootstrap uncertainty, and backtesting.</p>
+        </div>
+        <aside class="panel project-viz reveal" aria-label="Project visualization">
+          <canvas data-viz="distribution"></canvas>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="case-grid">
+        
+        <article class="case-card full reveal">
+          <h2>Problem</h2>
+          <p>Pairs trading depends on finding two assets whose spread behaves like it wants to come back home. This project models that spread, tests for stationarity, and builds entry/exit rules around standardized deviations from equilibrium.</p>
+        </article>
+        <article class="case-card reveal">
+          <h2>Statistical Frame</h2>
+          <ul>
+            <li>Cointegration to identify pairs with a stable long-run relationship.</li>
+            <li>ADF tests to evaluate spread stationarity.</li>
+            <li>Z-score thresholds for signal generation.</li>
+            <li>Half-life estimation to understand mean-reversion speed.</li>
+          </ul>
+        </article>
+        <article class="case-card reveal">
+          <h2>Uncertainty</h2>
+          <ul>
+            <li>Parametric and non-parametric bootstrap resampling.</li>
+            <li>Confidence intervals for half-life and expected spread return.</li>
+            <li>Interval-based caution around volatile periods to reduce false positives.</li>
+          </ul>
+        </article>
+        <article class="case-card reveal">
+          <h2>Result</h2>
+          <p>The strategy was backtested in Python with optimized entry and exit rules, producing stronger risk-adjusted performance and a reported Sharpe ratio above 1.6 in the resume version of the project.</p>
+        </article>
+        <article class="case-card reveal">
+          <h2>Stack</h2>
+          <p><code>Python</code>, <code>pandas</code>, <code>NumPy</code>, <code>statsmodels</code>, ADF tests, cointegration, bootstrap resampling, backtesting.</p>
+        </article>
+    
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div>© <span id="year"></span> Joseph Ortega · <a href="../index.html">Statistical Atlas</a></div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

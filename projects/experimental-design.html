@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experimental Design Notes — Joseph Ortega</title>
+  <meta name="description" content="A methods-centered page for potential outcomes, randomized inference, blocking, factorial design, power, and treatment effects." />
+  <meta name="theme-color" content="#071014" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="logo-mark">∇</span>
+        <span>joseph.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#methods">Methods</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-hero container">
+      <div class="project-hero-grid">
+        <div class="panel project-title reveal">
+          <a class="back" href="../index.html#projects">← Back to Project Atlas</a>
+          <div class="eyebrow">τ · treatment effects</div>
+          <h1>Experimental Design Notes</h1>
+          <p>A methods-centered page for potential outcomes, randomized inference, blocking, factorial design, power, and treatment effects.</p>
+        </div>
+        <aside class="panel project-viz reveal" aria-label="Project visualization">
+          <canvas data-viz="experiment"></canvas>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="case-grid">
+        
+        <article class="case-card full reveal">
+          <h2>Purpose</h2>
+          <p>This page is a home for the experimental design side of my statistics work: the part that asks how data should be generated before we ever model it.</p>
+        </article>
+        <article class="case-card reveal">
+          <h2>Core Ideas</h2>
+          <ul>
+            <li>Potential outcomes: <code>Yᵢ(1)</code> and <code>Yᵢ(0)</code>.</li>
+            <li>Average treatment effects and estimator uncertainty.</li>
+            <li>Complete randomization, blocked designs, and grouped/block structures.</li>
+            <li>Power, regret, tradeoffs, and design justification.</li>
+          </ul>
+        </article>
+        <article class="case-card reveal">
+          <h2>Why I like it</h2>
+          <p>Experimental design feels like the engineering side of statistics. It forces you to think about the assignment mechanism, the estimand, and what claims the data can actually support.</p>
+        </article>
+        <article class="case-card reveal">
+          <h2>Future additions</h2>
+          <ul>
+            <li>Reading-speed experiment writeup.</li>
+            <li>Randomization inference simulator.</li>
+            <li>Power calculator examples.</li>
+            <li>Visual guide to blocking and factorial designs.</li>
+          </ul>
+        </article>
+        <article class="case-card reveal">
+          <h2>Stack</h2>
+          <p><code>R</code>, randomization-based inference, simulation, power analysis, ggplot2, reproducible design reports.</p>
+        </article>
+    
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <div>© <span id="year"></span> Joseph Ortega · <a href="../index.html">Statistical Atlas</a></div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>
