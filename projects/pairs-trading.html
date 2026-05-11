@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pairs Trading Strategy — Joseph Ortega</title>
+  <meta name="description" content="Case study for a mean-reversion pairs trading strategy using cointegration, ADF tests, z-score thresholds, and backtesting." />
+  <meta property="og:title" content="Pairs Trading Strategy — Joseph Ortega" />
+  <meta property="og:description" content="Case study for a mean-reversion pairs trading strategy using cointegration, ADF tests, z-score thresholds, and backtesting." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/205101047?v=4" />
+  <meta name="theme-color" content="#070305" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="brand-mark">JO</span>
+        <span>Joseph Ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#work">Work</a><a href="../index.html#research">Research</a><a href="../index.html#experience">Experience</a><a href="../index.html#skills">Skills</a><a href="../index.html#contact">Contact</a>
+        <a href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero container">
+      <div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#work">Selected Works</a> / Pairs Trading</div>
+      <div class="eyebrow">Case Study</div>
+      <h1 class="page-title">Real-Time Pairs <span class="hollow">Trading</span></h1>
+      <p class="lede">A quantitative strategy chamber for testing whether two assets share a stable spread, then acting when that spread deviates from its historical relationship.</p>
+      <div class="page-meta"><span class="chip">Python</span><span class="chip">Cointegration</span><span class="chip">ADF Tests</span><span class="chip">Backtesting</span><span class="chip">Sharpe > 1.6</span></div>
+    </section>
+
+    <section class="section container">
+      <div class="case-layout">
+        <aside class="case-sidebar reveal">
+          <div class="sidebar-panel">
+            <h3>Project Ledger</h3>
+            <ul class="sidebar-list"><li><b>Domain</b>Quantitative trading</li><li><b>Model type</b>Mean reversion</li><li><b>Tests</b>Cointegration, ADF</li><li><b>Risk control</b>Bootstrap uncertainty bounds</li><li><b>Tools</b>pandas, statsmodels, NumPy</li></ul>
+            <div class="actions"><a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub Profile</a></div>
+          </div>
+        </aside>
+        <div class="case-body">
+          <section class="case-section reveal"><h2>Problem</h2><p>Pairs trading depends on identifying relationships that are stable enough to trade. The challenge is separating a real mean-reverting spread from noise, unstable correlation, or temporary co-movement.</p></section><section class="case-section reveal"><h2>Method</h2><p>The model evaluates candidate equity pairs through cointegration and ADF tests, then monitors the spread using z-score thresholds for entry and exit decisions. Backtests compare rules and thresholds to improve risk-adjusted performance.</p></section><section class="case-section reveal"><h2>Uncertainty</h2><p>The academic version of the project adds parametric and non-parametric bootstrap resampling to estimate confidence intervals for mean-reversion half-life and expected spread return. This creates a more cautious signal system during volatile periods.</p></section><section class="case-section reveal"><h2>What This Shows</h2><p>This project demonstrates statistical testing, trading signal design, backtesting discipline, threshold optimization, and risk-aware quantitative modeling.</p></section>
+          <section class="case-section reveal">
+            <h2>Evidence</h2>
+            <div class="metric-row"><div class="metric"><b>>1.6</b><span>Sharpe target achieved</span></div><div class="metric"><b>95%</b><span>bootstrap CI design</span></div><div class="metric"><b>ADF</b><span>stationarity testing</span></div></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-title reveal"><h2>Next Chambers<small>continue exploring</small></h2></div>
+      <div class="next-grid"><a class="next-card reveal" href="financial-signal-modeling.html"><h3>Financial Signal Modeling</h3><p>The broader financial modeling pipeline with sentiment, cycles, and LLM interpretation.</p></a><a class="next-card reveal" href="watch-dashboard.html"><h3>Watch Dashboard</h3><p>An applied analytics project using R Shiny, clustering, and regression.</p></a></div>
+    </section>
+  </main>
+  <footer class="site-footer container">
+    <div>© <span id="year"></span> Joseph Ortega · Designed as a dark academic data reliquary.</div>
+  </footer>
+  <script src="../assets/script.js"></script>
+</body>
+</html>
