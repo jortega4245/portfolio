@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joseph Ortega — Statistical Atlas</title>
+  <meta name="description" content="Joseph Ortega — UC Berkeley Statistics. A working portfolio of gradient descent, spectral methods, stochastic processes, experimental design, and applied analytics." />
+  <meta property="og:title" content="Joseph Ortega — Statistical Atlas" />
+  <meta property="og:description" content="A working portfolio of gradient descent, spectral methods, stochastic processes, experimental design, and applied analytics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/205101047?v=4" />
+  <meta name="theme-color" content="#0a0d12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#top" aria-label="Joseph Ortega home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20 L12 4 L21 20 Z" />
+            <path d="M6.5 14 L17.5 14" />
+          </svg>
+        </span>
+        <span><strong>joseph</strong>.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#toolkit">Toolkit</a>
+        <a href="#projects">Projects</a>
+        <a href="#mle">Inference</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a class="nav-cta" href="#contact">contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ── HERO ── -->
+    <section class="hero container" id="top">
+      <div class="hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">stats · uc berkeley · est. 2023</div>
+          <h1>Inference <em>for</em> messy <span class="accent">worlds.</span></h1>
+          <p class="hero-copy">
+            I'm Joseph — a UC Berkeley Statistics student building work at the seam of <strong>signal modeling, stochastic processes, experimental design,</strong> and the operational reality where decisions actually get made.
+          </p>
+          <div class="hero-meta">
+            <span>Time series</span>
+            <span>Causal design</span>
+            <span>Spectral methods</span>
+            <span>Applied ML</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#toolkit">
+              See the toolkit
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn" href="#projects">Projects</a>
+            <a class="btn ghost" href="mailto:jortega4245@berkeley.edu">Email</a>
+            <a class="btn ghost" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+
+        <aside class="lab reveal" aria-label="Live gradient descent visualization">
+          <div class="lab-bar">
+            <span>loss_surface.py · θ ∈ ℝ²</span>
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+          <div class="lab-stage">
+            <canvas data-viz="gradient" aria-hidden="true"></canvas>
+          </div>
+          <div class="lab-readout">
+            <div class="cell"><div class="k">optimizer</div><div class="v amber">SGD + mom.</div></div>
+            <div class="cell"><div class="k">step η</div><div class="v">0.018</div></div>
+            <div class="cell"><div class="k">‖∇L‖</div><div class="v cyan">→ 0</div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ── PERSONAL MODEL ── -->
+    <section class="section container" id="model">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 01 · personal model</div>
+          <h2>A portfolio organized like a <em>research notebook,</em> not a résumé.</h2>
+        </div>
+        <p class="lede">
+          The work below is laid out the way I think about it — distributions first, structure second, decisions third. Each project answers the same question in a different language: <em>what signal can we extract from noise, and how do we know we extracted it?</em>
+        </p>
+      </div>
+
+      <div class="about reveal">
+        <div class="about-note">
+          <span class="tag">working hypothesis</span>
+          <p class="pull">Good analytics is not prediction. It is <em>uncertainty made useful.</em></p>
+          <div class="sig">— j.o.</div>
+        </div>
+        <div class="about-body">
+          <p>My background blends formal statistics, data science coursework, and six years of operations leadership before Berkeley. That mix shapes how I work: I'm drawn to problems where mathematical structure meets real constraint — financial signals, workforce systems, longitudinal research, dashboards built for decisions.</p>
+          <p>I'm comfortable on both sides of the modern statistical divide: classical results when they're available, computational methods when they aren't. The page you're reading is a working atlas of both.</p>
+          <p>Currently a <strong>Discovery Undergraduate Research Scholar</strong> at Berkeley supporting migration-trends research with longitudinal modeling in R, while building independent projects in Python around time series and signal processing.</p>
+        </div>
+      </div>
+
+      <div class="formula-strip reveal" aria-label="Core statistical ideas">
+        <div class="formula">
+          <code>θ ← θ − η∇L(θ)</code>
+          <span>Optimization, gradient descent, model fitting as a descent through error.</span>
+        </div>
+        <div class="formula">
+          <code>I(ω) = |X(ω)|²</code>
+          <span>Spectral power, cycles, and hidden frequency structure in time series.</span>
+        </div>
+        <div class="formula">
+          <code>τ = E[Y(1) − Y(0)]</code>
+          <span>Potential outcomes, treatment effects, randomization, design-based inference.</span>
+        </div>
+        <div class="formula">
+          <code>θ̂ = argmax ℓ(θ; x)</code>
+          <span>Maximum likelihood — classical when tractable, computational when not.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MATH TOOLKIT (the showpiece) ── -->
+    <section class="section container" id="toolkit">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 02 · mathematical toolkit</div>
+          <h2>Six ideas I keep <em>coming back to.</em></h2>
+        </div>
+        <p class="lede">
+          Not a skills list. The mathematical objects I actually reach for — animated so you can see them work, with the formulas they live in. Everything below is rendered live in your browser.
+        </p>
+      </div>
+
+      <div class="toolkit">
+
+        <article class="tool wide reveal">
+          <div class="tool-head">
+            <span class="label">∇ · optimization</span>
+            <span class="num">01</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="gradient" aria-label="Gradient descent over a loss surface"></canvas>
+          <div class="tool-body">
+            <h3>Gradient descent on a loss surface</h3>
+            <span class="eq">θ<sub>t+1</sub> = θ<sub>t</sub> − η · ∇L(θ<sub>t</sub>)</span>
+            <p>The workhorse behind almost every modern model — from logistic regression to deep nets. A path through parameter space toward lower error, governed by step size η and the local geometry of L.</p>
+          </div>
+        </article>
+
+        <article class="tool wide reveal">
+          <div class="tool-head">
+            <span class="label">ω · spectral</span>
+            <span class="num">02</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="dft" aria-label="Discrete Fourier transform with periodogram"></canvas>
+          <div class="tool-body">
+            <h3>Discrete Fourier transform · periodogram</h3>
+            <span class="eq">X(ω<sub>k</sub>) = Σ<sub>t</sub> x<sub>t</sub> · e<sup>−i ω<sub>k</sub>t</sup></span>
+            <p>Every signal is a sum of waves. The DFT decomposes a time series into frequency content; the periodogram |X(ω)|² makes hidden cycles visible.</p>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool-head">
+            <span class="label">dWₜ · stochastic</span>
+            <span class="num">03</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="ou" aria-label="Ornstein-Uhlenbeck mean reversion"></canvas>
+          <div class="tool-body">
+            <h3>Ornstein–Uhlenbeck mean reversion</h3>
+            <span class="eq">dX<sub>t</sub> = θ(μ − X<sub>t</sub>)dt + σ dW<sub>t</sub></span>
+            <p>The continuous-time engine behind pairs trading. A drifting process pulled back toward its long-run mean — the mathematical reason cointegrated spreads are tradable.</p>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool-head">
+            <span class="label">∗ · convolution</span>
+            <span class="num">04</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="conv" aria-label="Convolutional kernel sliding over a feature map"></canvas>
+          <div class="tool-body">
+            <h3>Convolution · CNN feature maps</h3>
+            <span class="eq">(f ∗ g)[i,j] = Σ<sub>m,n</sub> f[m,n] g[i−m, j−n]</span>
+            <p>A small learned kernel sweeps across an input and reports what it sees. The basic operation under every image model — and the same math underneath time-series filters.</p>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool-head">
+            <span class="label">ℓ(θ) · likelihood</span>
+            <span class="num">05</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="mle" aria-label="Maximum likelihood iterative ascent"></canvas>
+          <div class="tool-body">
+            <h3>Maximum likelihood · iterative ascent</h3>
+            <span class="eq">θ̂ = argmax<sub>θ</sub> Σ log f(x<sub>i</sub> | θ)</span>
+            <p>When the score equation has a closed form, classical statistics gives you θ̂ in one line. When it doesn't, you climb the log-likelihood numerically — same estimand, different machinery.</p>
+          </div>
+        </article>
+
+        <article class="tool reveal">
+          <div class="tool-head">
+            <span class="label">T*ᵦ · resampling</span>
+            <span class="num">06</span>
+          </div>
+          <canvas class="tool-canvas" data-viz="bootstrap" aria-label="Bootstrap sampling distribution"></canvas>
+          <div class="tool-body">
+            <h3>Bootstrap · empirical sampling distribution</h3>
+            <span class="eq">T*<sub>b</sub> = T(X*<sub>b</sub>),   b = 1 … B</span>
+            <p>When the analytic distribution of a statistic is hard, resample with replacement and let the data tell you. Confidence intervals, standard errors, and uncertainty without a textbook formula.</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section class="section container" id="projects">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 03 · project atlas</div>
+          <h2>Case studies — <em>signals, structure, systems.</em></h2>
+        </div>
+        <p class="lede">
+          Each project below has its own page with problem, methods, and outcome. Two are live: the watch analyzer ships as a deployed dashboard, and the pairs trading code is open on GitHub.
+        </p>
+      </div>
+
+      <div class="projects">
+
+        <a class="proj featured reveal" href="projects/financial-signal-modeling.html">
+          <span class="proj-symbol" aria-hidden="true">ω</span>
+          <div class="proj-kicker">signal modeling · spectral analysis</div>
+          <h3>Financial signal modeling with sentiment, periodograms &amp; LLM interpretation</h3>
+          <p>Equity prices for NVDA, AMD, TSM, INTC, and AVGO meet sentiment features, lagged returns, AR structure, and frequency-domain inspection. The model proposes; an LLM-driven interpretation layer explains the structure it found.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">Python</span><span class="tag">statsmodels</span><span class="tag">Fourier</span><span class="tag">LLMs</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="proj compact reveal" href="projects/pairs-trading.html">
+          <span class="proj-symbol" aria-hidden="true">z</span>
+          <div class="proj-kicker">quant strategy · mean reversion</div>
+          <h3>Real-time pairs trading strategy</h3>
+          <p>Cointegration, ADF tests, z-score thresholds, bootstrap uncertainty, and backtested entry/exit rules. Source on GitHub.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">Bootstrap</span><span class="tag">ADF</span><span class="tag">Backtest</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="proj compact reveal" href="projects/watch-dashboard.html">
+          <span class="proj-symbol" aria-hidden="true">β</span>
+          <div class="proj-kicker">R Shiny · live dashboard</div>
+          <h3>Watch listing analyzer (live)</h3>
+          <p>An interactive R Shiny dashboard over 750+ watch listings — regression, clustering, text mining. Deployed and live.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">R</span><span class="tag">Shiny</span><span class="tag">ggplot2</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="proj featured reveal" href="projects/experimental-design.html">
+          <span class="proj-symbol" aria-hidden="true">τ</span>
+          <div class="proj-kicker">experimental design · causal inference</div>
+          <h3>Design thinking: treatments, blocks &amp; potential outcomes</h3>
+          <p>The part of statistics that asks how data should be generated before we model it. Randomization-based inference, blocking, factorial designs, power analysis, and the discipline of stating an estimand before touching the data.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">ATE</span><span class="tag">Randomization</span><span class="tag">Blocking</span><span class="tag">Power</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="proj featured reveal" href="projects/research-migration.html">
+          <span class="proj-symbol" aria-hidden="true">μ</span>
+          <div class="proj-kicker">research · longitudinal modeling</div>
+          <h3>Migration trends &amp; longitudinal research</h3>
+          <p>UC Berkeley Discovery research using R, longitudinal data, fixed-effects regression, and reproducible scripts. Connected to presentation work at the Pacific Sociological Association.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">R</span><span class="tag">Fixed Effects</span><span class="tag">Panel</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <a class="proj compact reveal" href="projects/operations-dashboard.html">
+          <span class="proj-symbol" aria-hidden="true">KPI</span>
+          <div class="proj-kicker">operations · forecasting</div>
+          <h3>Workforce optimization &amp; KPI dashboards</h3>
+          <p>Six years of payroll, scheduling, coverage, and compliance analytics — distilled into dashboards and forecasts that drove an 80% reduction in payroll discrepancies.</p>
+          <div class="proj-foot">
+            <div class="proj-tags">
+              <span class="tag">Power BI</span><span class="tag">Forecasting</span><span class="tag">Excel</span>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── MLE CLASSICAL vs COMPUTATIONAL ── -->
+    <section class="section container" id="mle">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 04 · classical vs computational</div>
+          <h2>Two ways to find <em>θ̂</em> — same target, different machinery.</h2>
+        </div>
+        <p class="lede">
+          A small case study I think about a lot: maximum likelihood is one estimand with two personalities. Sometimes you get a closed form; sometimes you climb the log-likelihood numerically. The intuition is the same — the workflow is not.
+        </p>
+      </div>
+
+      <div class="mle-compare reveal">
+
+        <div class="mle-col">
+          <span class="tag">classical</span>
+          <h4>Score equation, solve directly</h4>
+          <pre class="eqblock">ℓ(θ; x) = Σᵢ log f(xᵢ ; θ)
+
+∂ℓ/∂θ = 0   →   <em>θ̂ in closed form</em>
+
+ex. Normal:  μ̂ = x̄,   σ̂² = (1/n)Σ(xᵢ − x̄)²</pre>
+          <p>When the model is tractable — Gaussian, exponential, binomial — the score equation hands you the MLE algebraically. You also get the Fisher information for free, which gives asymptotic standard errors without simulation.</p>
+        </div>
+
+        <div class="mle-col">
+          <span class="tag">computational</span>
+          <h4>Iterate toward the optimum</h4>
+          <pre class="eqblock">θ₀ ← initial guess
+
+repeat:
+   θ ← θ + <em>α · ∇ℓ(θ)</em>          // gradient ascent
+   or  θ ← θ − <em>H⁻¹∇ℓ(θ)</em>       // Newton–Raphson
+
+until ‖∇ℓ‖ &lt; ε</pre>
+          <p>When ∂ℓ/∂θ = 0 has no analytic solution — most realistic models, including everything with constraints, latent variables, or nonlinearities — you climb the log-likelihood. The bootstrap then steps in for the standard errors that Fisher used to give you.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── EXPERIENCE ── -->
+    <section class="section container" id="experience">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 05 · experience</div>
+          <h2>Research, then <em>real systems.</em></h2>
+        </div>
+        <p class="lede">
+          I've worked with both models and the messy operational reality they're supposed to help. Both halves shape how I build now.
+        </p>
+      </div>
+
+      <div class="timeline reveal">
+        <article class="role">
+          <div class="role-when">2025 — present<small>Berkeley, CA</small></div>
+          <div class="role-body">
+            <h3>Discovery Undergraduate Research Scholar · UC Berkeley</h3>
+            <p>Statistical modeling of migration trends and geographic mobility using longitudinal data in R, fixed-effects regression, reproducible scripts, and research visualization for academic presentation.</p>
+          </div>
+          <div class="role-where">research · longitudinal</div>
+        </article>
+        <article class="role">
+          <div class="role-when">2025 — present<small>Berkeley, CA</small></div>
+          <div class="role-body">
+            <h3>Finance Intern · ALPFA UC Berkeley</h3>
+            <p>Budget tracking, expense monitoring, and financial reporting for a student-led professional development organization. Building dashboards and reporting cadence from scratch.</p>
+          </div>
+          <div class="role-where">finance · reporting</div>
+        </article>
+        <article class="role">
+          <div class="role-when">2019 — 2025<small>Bay Area, CA</small></div>
+          <div class="role-body">
+            <h3>Account Manager · Allied Universal (Amazon Account)</h3>
+            <p>Built payroll, scheduling, and labor dashboards across a multi-site Amazon-facing operation. Used workforce forecasting to close coverage gaps and KPI tracking to reduce payroll discrepancies by ~80%.</p>
+          </div>
+          <div class="role-where">operations · forecasting</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section class="section container" id="skills">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-num">§ 06 · technical stack</div>
+          <h2>Grouped by <em>how I use them</em>, not what's on a tag cloud.</h2>
+        </div>
+        <p class="lede">
+          Tooling is downstream of method. Below: the things I actually reach for in each mode — research, engineering, and applied analytics.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill reveal">
+          <div class="h"><h3>Languages</h3><span class="num">/01</span></div>
+          <ul>
+            <li>Python — pandas, NumPy, statsmodels, scikit-learn</li>
+            <li>R — tidyverse, ggplot2, Shiny, R Markdown</li>
+            <li>SQL — querying, joins, window functions</li>
+            <li>Bash, Git, Linux command line</li>
+            <li>LaTeX for research documents</li>
+          </ul>
+        </div>
+        <div class="skill reveal">
+          <div class="h"><h3>Statistics</h3><span class="num">/02</span></div>
+          <ul>
+            <li>Regression, inference, hypothesis testing</li>
+            <li>Time series — AR/MA, ARIMA, spectral analysis</li>
+            <li>Stochastic processes — random walks, OU, Brownian motion</li>
+            <li>Experimental design — randomization, blocking, power</li>
+            <li>Bootstrap, simulation, MCMC intuition</li>
+          </ul>
+        </div>
+        <div class="skill reveal">
+          <div class="h"><h3>Analytics &amp; ML</h3><span class="num">/03</span></div>
+          <ul>
+            <li>Power BI, Tableau, Excel modeling</li>
+            <li>Forecasting, KPI design, operational reporting</li>
+            <li>scikit-learn, gradient boosting, regularization</li>
+            <li>CNN / RNN foundations, PyTorch basics</li>
+            <li>Data cleaning, feature engineering, visualization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="section container" id="contact">
+      <div class="contact-card reveal">
+        <div class="eyebrow">§ 07 · contact</div>
+        <h2>Let the <em>model</em> meet the mess.</h2>
+        <p>Open to data science, quantitative research, analytics, and research-centered technical roles — internships and full-time. Happy to walk you through any project on this page.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="mailto:jortega4245@berkeley.edu">
+            jortega4245@berkeley.edu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/josephrortega42" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/jortega4245" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container footer">
+    <div>© <span id="year"></span> Joseph Ortega · Statistical Atlas</div>
+    <div>Built &amp; hosted on GitHub Pages · Fraunces / Inter Tight / JetBrains Mono</div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
