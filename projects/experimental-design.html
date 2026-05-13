@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experimental Design Notes · Joseph Ortega</title>
+  <meta name="description" content="A methods-centered page for potential outcomes, randomized inference, blocking, factorial design, power, and treatment effects." />
+  <meta name="theme-color" content="#0a0d12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20 L12 4 L21 20 Z" /><path d="M6.5 14 L17.5 14" />
+          </svg>
+        </span>
+        <span><strong>joseph</strong>.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#toolkit">Toolkit</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a class="nav-cta" href="../index.html#contact">contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="proj-hero container">
+      <div class="proj-hero-grid">
+        <div class="proj-title reveal">
+          <a class="back" href="../index.html#projects">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            back to atlas
+          </a>
+          <div class="eyebrow">τ · treatment effects</div>
+          <h1>Design <em>thinking.</em></h1>
+          <p class="blurb">Potential outcomes, randomized inference, blocking, factorial design, power, and treatment effects. The part of statistics that asks how data should be generated before we ever model it.</p>
+        </div>
+        <aside class="proj-viz reveal" aria-label="Blocked randomization visualization">
+          <canvas data-viz="experiment"></canvas>
+          <div class="legend"><span>blocks × assignment</span><span>T = treated</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top: 20px;">
+      <div class="case-grid">
+
+        <article class="case-card full reveal">
+          <div class="num">§ purpose</div>
+          <h2>The estimand comes first.</h2>
+          <p>This page is a home for the experimental-design side of my statistics work. The side that asks <em>what claim do I want to make, and what assignment mechanism would let me make it?</em> A lot of analysis goes sideways because the estimand was never stated; design thinking forces that question into the open.</p>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ core ideas</div>
+          <h2>The objects I think with.</h2>
+          <ul>
+            <li><strong>Potential outcomes:</strong> <code>Yᵢ(1)</code> and <code>Yᵢ(0)</code>.</li>
+            <li><strong>Average treatment effect:</strong> <code>τ = E[Y(1) − Y(0)]</code>.</li>
+            <li>Complete randomization, blocked designs, and within-stratum balance.</li>
+            <li>Factorial designs, interaction effects, and main-effect identification.</li>
+            <li>Power, regret, tradeoffs, and design justification before data collection.</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ why I like it</div>
+          <h2>Engineering, for statisticians.</h2>
+          <p>Experimental design feels like the engineering side of statistics. It forces you to commit (to the assignment mechanism, to the estimand, to the variance you're willing to accept) before the data exists. Modeling without design is fitting; modeling <em>after</em> design is inference.</p>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ future additions</div>
+          <h2>What's coming to this page.</h2>
+          <ul>
+            <li>A reading-speed experiment writeup with full design memo.</li>
+            <li>Interactive randomization-inference simulator.</li>
+            <li>Power calculator with worked examples.</li>
+            <li>Visual guide to blocking and factorial designs.</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ stack</div>
+          <h2>Tooling.</h2>
+          <p><code>R</code>, randomization-based inference, simulation, power analysis, <code>ggplot2</code>, reproducible design reports.</p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© <span id="year"></span> Joseph Ortega · <a href="../index.html">Statistical Atlas</a></div>
+    <div>Built &amp; hosted on GitHub Pages</div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

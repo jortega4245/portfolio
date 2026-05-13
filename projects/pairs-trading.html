@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Real-Time Pairs Trading Strategy · Joseph Ortega</title>
+  <meta name="description" content="A mean-reversion trading system built around cointegration, ADF testing, z-score thresholds, bootstrap uncertainty, and backtesting." />
+  <meta name="theme-color" content="#0a0d12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20 L12 4 L21 20 Z" /><path d="M6.5 14 L17.5 14" />
+          </svg>
+        </span>
+        <span><strong>joseph</strong>.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#toolkit">Toolkit</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a class="nav-cta" href="../index.html#contact">contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="proj-hero container">
+      <div class="proj-hero-grid">
+        <div class="proj-title reveal">
+          <a class="back" href="../index.html#projects">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            back to atlas
+          </a>
+          <div class="eyebrow">z · spread normalization</div>
+          <h1>Real-time <em>pairs</em> trading.</h1>
+          <p class="blurb">A mean-reversion trading system built around cointegration, ADF tests, z-score thresholds, bootstrap uncertainty, and backtested entry/exit rules.</p>
+        </div>
+        <aside class="proj-viz reveal" aria-label="Mean reversion visualization">
+          <canvas data-viz="ou"></canvas>
+          <div class="legend"><span>spread Xₜ</span><span>θ(μ − Xₜ)dt + σ dWₜ</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top: 20px;">
+      <div class="case-grid">
+
+        <article class="case-card full reveal">
+          <div class="num">§ problem</div>
+          <h2>When two prices want to come home together.</h2>
+          <p>Pairs trading rests on a simple bet: find two assets whose price spread behaves like it wants to revert to a long-run mean, then trade the deviations from that mean. The mathematical object underneath is an <code>Ornstein–Uhlenbeck</code>-style process. A stochastic spread pulled back toward its equilibrium with some half-life. Everything in this project flows from that single picture.</p>
+          <div class="case-links">
+            <a class="primary" href="https://github.com/jortega4245/pairs-trading" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View source on GitHub
+            </a>
+            <a href="https://github.com/jortega4245/pairs-trading" target="_blank" rel="noopener">github.com/jortega4245/pairs-trading ↗</a>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ statistical frame</div>
+          <h2>The plumbing.</h2>
+          <ul>
+            <li><strong>Engle–Granger cointegration</strong> to identify pairs with a stable long-run linear relationship.</li>
+            <li><strong>Augmented Dickey–Fuller (ADF)</strong> tests on the residual spread to evaluate stationarity.</li>
+            <li><strong>Half-life estimation</strong> from an AR(1) fit on the spread. How fast does it revert?</li>
+            <li><strong>z-score thresholds</strong> for entry, exit, and stop signals.</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ uncertainty</div>
+          <h2>Bootstrap, because Fisher won't help here.</h2>
+          <ul>
+            <li>Parametric and non-parametric <strong>bootstrap resampling</strong> on backtest returns.</li>
+            <li><strong>Confidence intervals</strong> for half-life and expected spread return.</li>
+            <li>Interval-based caution during high-volatility regimes to reduce false positives.</li>
+            <li>Walk-forward validation to avoid look-ahead leakage.</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ result</div>
+          <h2>Backtested, not just hand-wavy.</h2>
+          <p>The strategy is implemented in Python with optimized entry and exit rules, producing improved risk-adjusted performance. The resume version of the project reports a Sharpe ratio above <code>1.6</code>. The interesting work here was not chasing return; it was being honest about how much of the Sharpe ratio is signal and how much is sample.</p>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ stack</div>
+          <h2>Tooling.</h2>
+          <p><code>Python</code>, <code>pandas</code>, <code>NumPy</code>, <code>statsmodels</code>, ADF tests, Engle–Granger cointegration, bootstrap resampling, and a custom backtesting loop.</p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© <span id="year"></span> Joseph Ortega · <a href="../index.html">Statistical Atlas</a></div>
+    <div>Built &amp; hosted on GitHub Pages</div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

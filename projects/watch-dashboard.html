@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Watch Listing Analyzer · Joseph Ortega</title>
+  <meta name="description" content="An R Shiny dashboard using regression, clustering, text mining, and visualization to analyze 750+ watch listings. Live deployment." />
+  <meta name="theme-color" content="#0a0d12" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="../index.html" aria-label="Joseph Ortega home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 20 L12 4 L21 20 Z" /><path d="M6.5 14 L17.5 14" />
+          </svg>
+        </span>
+        <span><strong>joseph</strong>.ortega</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../index.html#toolkit">Toolkit</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#experience">Experience</a>
+        <a class="nav-cta" href="../index.html#contact">contact ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="proj-hero container">
+      <div class="proj-hero-grid">
+        <div class="proj-title reveal">
+          <a class="back" href="../index.html#projects">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            back to atlas
+          </a>
+          <div class="eyebrow">β · regression / clustering · live</div>
+          <h1>Watch <em>listing</em> analyzer.</h1>
+          <p class="blurb">An R Shiny dashboard over 750+ watch listings: regression on price determinants, clustering on model families, and text mining over titles and metadata.</p>
+        </div>
+        <aside class="proj-viz reveal" aria-label="Distribution visualization">
+          <canvas data-viz="distribution"></canvas>
+          <div class="legend"><span>brand price densities</span><span>kernel density · ggplot2</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" style="padding-top: 20px;">
+      <div class="case-grid">
+
+        <article class="case-card full reveal">
+          <div class="num">§ live deployment</div>
+          <h2>This one is shipped. Go look at it.</h2>
+          <p>The dashboard is built for exploration, not static reporting. Users can filter, compare, and inspect patterns across brand, model, movement, and price behavior. It's published as an interactive R Shiny app and lives on GitHub Pages alongside the rest of the portfolio.</p>
+          <div class="case-links">
+            <a class="primary" href="https://jortega4245.github.io/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3h7v7M10 14L21 3M5 21h14a2 2 0 0 0 2-2v-7"/></svg>
+              Open the live dashboard
+            </a>
+            <a href="https://jortega4245.github.io/" target="_blank" rel="noopener">jortega4245.github.io ↗</a>
+          </div>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ problem</div>
+          <h2>What actually drives a watch's price.</h2>
+          <p>Watch prices are driven by brand, model, movement type, case material, condition, scarcity, and metadata. The project turns a curated collection of listings into a single interactive surface for asking value-driver questions, and an exercise in shipping something past the notebook.</p>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ analysis</div>
+          <h2>Methods, briefly.</h2>
+          <ul>
+            <li><strong>Regression</strong> to study price determinants and brand premia.</li>
+            <li><strong>Clustering</strong> to group similar listings and model families.</li>
+            <li><strong>Text mining</strong> on model names, descriptions, and metadata.</li>
+            <li><strong>Interactive visualization</strong> through R Shiny: filters, comparisons, and brand drill-downs.</li>
+          </ul>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ what it shows</div>
+          <h2>Beyond "I trained a model".</h2>
+          <p>This project is the part of my work I'm most attached to: building data <em>products</em>, not just models. Running a regression is one skill. Building something a non-technical person can actually explore is a different one, and that's the one I wanted to practice.</p>
+        </article>
+
+        <article class="case-card reveal">
+          <div class="num">§ stack</div>
+          <h2>Tooling.</h2>
+          <p><code>R</code>, <code>Shiny</code>, <code>ggplot2</code>, <code>tidyverse</code>, regression, k-means clustering, basic text mining, exploratory data analysis.</p>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <div>© <span id="year"></span> Joseph Ortega · <a href="../index.html">Statistical Atlas</a></div>
+    <div>Built &amp; hosted on GitHub Pages</div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>
