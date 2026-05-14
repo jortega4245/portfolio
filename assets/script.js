@@ -734,7 +734,7 @@
     arrow(O, Yhat, "#5eead4", "X\u03b2\u0302", { width: 2.4, size: 12, ly: 14, lx: -4, align: "right" });
 
     // residual e perpendicular to plane
-    arrow(Yhat, Y, "#ed6a5a", "e = Y \u2212 X\u03b2\u0302", { width: 2.4, size: 12, lx: 8 });
+    arrow(Yhat, Y, "#ed6a5a", "e = Y \u2212 X\u03b2\u0302", { width: 2.4, size: 12, lx: 8, ly: 14 });
 
     // Y vector
     arrow(O, Y, "rgba(243, 236, 217, 0.95)", "Y", { width: 2.4, size: 13, lx: 10, ly: -8 });
